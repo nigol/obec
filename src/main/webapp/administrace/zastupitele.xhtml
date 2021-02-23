@@ -86,6 +86,7 @@
                         <p:outputLabel value="Začátek mandátu" for="startDate"/>
                         <p:calendar id="startDate"
                             value="#{councillorAdminBean.councillor.startDate}"
+                            required="true"
                             locale="cz"
                             pattern="dd.MM.yyyy"
                             mask="true">

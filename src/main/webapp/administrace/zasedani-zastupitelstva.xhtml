@@ -57,6 +57,14 @@
                                 value="#{councilMeetingAdminBean.councilMeeting.label}">
                             <f:validateLength maximum="200"/>
                         </p:inputText>
+                        
+                        <p:outputLabel value="Datum konání" for="date"/>
+                        <p:calendar id="date"
+                            value="#{councilMeetingAdminBean.councilMeeting.meetingDate}"
+                            required="true"
+                            locale="cz"
+                            pattern="dd.MM.yyyy"
+                            mask="true"/>
 
                         <p:outputLabel value="Volební období" for="period"/>
                         <h:outputText id="period" value="#{councilMeetingAdminBean.electionPeriod.label}"/>
