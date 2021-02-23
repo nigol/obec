@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 @NamedQueries({
     @NamedQuery(name=CouncilMeeting.GET_ALL, query="SELECT cm FROM CouncilMeeting cm ORDER BY cm.id DESC"),
+    @NamedQuery(name=CouncilMeeting.GET_BY_DATE_RANGE, 
+        query="SELECT cm FROM CouncilMeeting cm WHERE cm.meetingDate BETWEEN :startDate AND :endDate"),
 })
 @Entity
 @Table(name="OB_COUNCIL_MEETING")
@@ -13,6 +15,10 @@ public class CouncilMeeting implements Serializable {
     private static final long serialVersionUID = -4378072789330339015L;
 
     public static final String GET_ALL = "CouncilMeeting.GET_ALL";
+    public static final String GET_BY_DATE_RANGE = "CouncilMeeting.GET_BY_DATE_RANGE";
+    
+    public static final String START_DATE_PARAM = "startDate";
+    public static final String END_DATE_PARAM = "endDate";
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,6 +38,18 @@ public class CouncilMeeting implements Serializable {
         joinColumns=@JoinColumn(name="COUNCIL_MEETING_ID", referencedColumnName="ID"),
         inverseJoinColumns=@JoinColumn(name="COUNCILLOR_ID", referencedColumnName="ID"))
     private List<Councillor> councillors;
+    
+    @Column(name="MEETING_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date meetingDate;
+    
+    public Date getMeetingDate() {
+        return this.meetingDate;
+    }
+    
+    public void setMeetingDate(Date meetingDate) {
+        this.meetingDate = meetingDate;
+    }
 
     public List<Councillor> getCouncillors() {
         return councillors;     
