@@ -94,6 +94,13 @@
                             <p:outputLabel value="Úvodní stránka" for="featured"/>
                         </p:column>
                     </p:panelGrid>
+                    
+                    <p:outputLabel value="Datum platnosti pro úvodní stranu" for="date"/>
+                        <p:calendar id="date"
+                            value="#{newsBean.news.validUntil}"
+                            locale="cz"
+                            pattern="dd.MM.yyyy"
+                            mask="true"/>
 
                     <p:outputLabel value="URL obrázku" for="ogImageUrl"/>
                     <p:inputText id="ogImageUrl" 
