@@ -25,6 +25,8 @@ import cz.nigol.obec.entities.interfaces.RssItem;
     query="SELECT n FROM News n WHERE n.featured = true ORDER BY n.createdAt DESC"),
     @NamedQuery(name=News.GET_BY_DATE, 
     query="SELECT n FROM News n WHERE n.featured = true AND n.validUntil BETWEEN :startDate AND :endDate ORDER BY n.createdAt DESC"),
+    @NamedQuery(name=News.GET_FEATURED_BY_DATE, 
+    query="SELECT n FROM News n WHERE n.featured = true AND n.validUntil > :endDate ORDER BY n.createdAt DESC"),
 })
 @Entity
 @Table(name="OB_NEWS")
@@ -34,6 +36,7 @@ public class News implements Serializable, RssItem {
     public static final String GET_ALL = "News.GET_ALL";
     public static final String GET_FEATURED = "News.GET_FEATURED";
     public static final String GET_BY_DATE = "News.GET_BY_DATE";
+    public static final String GET_FEATURED_BY_DATE = "News.GET_FEATURED_BY_DATE";
     
     public static final String START_DATE_PARAM = "startDate";
     public static final String END_DATE_PARAM = "endDate";

@@ -1,7 +1,7 @@
 package cz.nigol.obec.services.impl;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -61,6 +61,13 @@ public class NewsServiceImpl implements NewsService {
     public List<News> getFeaturedCount(int count) {
         TypedQuery<News> typedQuery = em.createNamedQuery(News.GET_FEATURED, News.class);
         typedQuery.setMaxResults(count);
+        return new ArrayList<>(typedQuery.getResultList());
+    }
+    
+    @Override
+    public List<News> getFeaturedByDate(Date date) {
+        TypedQuery<News> typedQuery = em.createNamedQuery(News.GET_FEATURED_BY_DATE, News.class);
+        typedQuery.setParameter(News.END_DATE_PARAM, date);
         return new ArrayList<>(typedQuery.getResultList());
     }
 }
