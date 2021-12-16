@@ -63,4 +63,12 @@ public class CouncillorServiceImpl implements CouncillorService {
         List<Councillor> councillors = typedQuery.getResultList();
         return councillors.isEmpty() ? null : councillors.get(0);
     }
+    
+    @Override
+    public List<CouncilMeeting> getAllCouncilMeetingsFor(Councillor councillor) {
+        TypedQuery<CouncilMeeting> typedQuery = em.createNamedQuery(CouncilMeeting.GET_BY_DATE_RANGE, CouncilMeeting.class);
+        typedQuery.setParameter(CouncilMeeting.START_DATE_PARAM, councillor.getStartDate());
+        typedQuery.setParameter(CouncilMeeting.END_DATE_PARAM, councillor.getEndDate() == null ? new Date() : councillor.getEndDate());
+        return typedQuery.getResultList();
+    }
 }

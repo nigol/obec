@@ -14,7 +14,7 @@
     </context-param>
     <context-param>
       <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-      <param-value>server</param-value>
+      <param-value>client</param-value>
     </context-param>
     <context-param>
       <param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
@@ -34,7 +34,7 @@
     
     <session-config>
         <session-timeout>
-            120
+            60
         </session-timeout>
     </session-config>
     

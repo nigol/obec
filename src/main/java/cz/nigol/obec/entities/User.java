@@ -13,7 +13,7 @@ import javax.persistence.*;
     @NamedQuery(name=User.GET_BY_USER_ID, query="SELECT u FROM User u WHERE u.userId = :userId"),
     @NamedQuery(name=User.FIND_ACTIVE_USER_NAME, query="SELECT u FROM User u WHERE u.fullName LIKE :name AND u.active = true"),
     @NamedQuery(name=User.FIND_ANNOUNCEMENT_SUBSCRIBERS, query="SELECT u FROM User u WHERE u.sendAnnouncements = true"),
-    @NamedQuery(name=User.GET_BY_EMAIL, query="SELECT u FROM User u WHERE u.email= :email"),
+    @NamedQuery(name=User.GET_BY_EMAIL, query="SELECT u FROM User u WHERE u.email = LOWER(:email)"),
     @NamedQuery(name=User.GET_BY_TOKEN, query="SELECT u FROM User u WHERE u.token= :token"),
 })
 @Entity

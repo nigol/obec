@@ -1,6 +1,6 @@
 package cz.nigol.obec.services;
 
-import java.util.List;
+import java.util.*;
 
 import cz.nigol.obec.entities.News;
 import cz.nigol.obec.entities.interfaces.RssItem;
@@ -13,4 +13,5 @@ public interface NewsService {
     List<News> getFeatured();
     List<RssItem> getAllRss();
     List<News> getFeaturedCount(int count);
+    List<News> getFeaturedByDate(Date date);
 }

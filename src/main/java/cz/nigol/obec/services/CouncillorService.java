@@ -13,4 +13,5 @@ public interface CouncillorService {
     Councillor findCouncillorById(long id);
     ElectionPeriod findElectionPeriodById(long id);
     Councillor getCouncillorByUser(User user);
+    List<CouncilMeeting> getAllCouncilMeetingsFor(Councillor councillor);
 }
