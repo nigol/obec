@@ -34,6 +34,13 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 ```
 
 ## Changelog
+
+### Verze 1.7.4
+
+* Aktuality mají časovou platnost.
+* Při resetu hesla se u emailové adresy nerozlišují velká a malá písmena.
+* Nová verze Log4j.
+
 ### Verze 1.7.3
 
 * Možnost konfigurace období pro odečet vody. Pokud není zadáno, formulář je skryt.
