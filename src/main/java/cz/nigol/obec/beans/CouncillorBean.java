@@ -37,6 +37,9 @@ public class CouncillorBean implements Serializable {
     public void onLoad() {
         councillor = councillorService.findCouncillorById(id);
         allMeetings = councillorService.getAllCouncilMeetingsFor(councillor).size();
+        if (allMeetings == 0) {
+            allMeetings = 1;
+        }
         attendedMeetings = councillor.getCouncilMeetings().size();
         percentage = (100 * attendedMeetings) / allMeetings;
         prepareChartModel();
