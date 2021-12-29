@@ -7,7 +7,7 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name=CouncilMeeting.GET_ALL, query="SELECT cm FROM CouncilMeeting cm ORDER BY cm.id DESC"),
     @NamedQuery(name=CouncilMeeting.GET_BY_DATE_RANGE, 
-        query="SELECT cm FROM CouncilMeeting cm WHERE cm.meetingDate BETWEEN :startDate AND :endDate"),
+        query="SELECT cm FROM CouncilMeeting cm WHERE cm.meetingDate >= :startDate AND cm.meetingDate <= :endDate"),
 })
 @Entity
 @Table(name="OB_COUNCIL_MEETING")
