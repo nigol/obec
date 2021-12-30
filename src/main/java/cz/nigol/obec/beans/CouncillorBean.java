@@ -36,7 +36,7 @@ public class CouncillorBean implements Serializable {
 
     public void onLoad() {
         councillor = councillorService.findCouncillorById(id);
-        allMeetings = councillorService.getAllCouncilMeetingsFor(councillor).size();
+        allMeetings = councillor.getElectionPeriod().getCouncilMeetings().size();
         attendedMeetings = councillor.getCouncilMeetings().size();
         if (allMeetings == 0) {
             allMeetings = attendedMeetings;
