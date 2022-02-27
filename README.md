@@ -35,6 +35,10 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.7.7
+
+* Oprava generování RSS feedů.
+
 ### Verze 1.7.4
 
 * Aktuality mají časovou platnost.

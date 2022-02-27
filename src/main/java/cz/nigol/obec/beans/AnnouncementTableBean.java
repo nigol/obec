@@ -50,11 +50,13 @@ public class AnnouncementTableBean implements Serializable {
 
     private void generateRssChannel() throws IOException {
         String url = settings.getBaseUrl() + "/obecni-urad/rozhlas/detail.jsf?id=";
+        String feedUrl = settings.getBaseUrl() + "/obecni-urad/rozhlas/hlaseni.jsf?rss=true";
         ExternalContext externalContext = facesContext.getExternalContext();
         externalContext.responseReset();
         externalContext.setResponseContentType("application/rss+xml");
         OutputStream outputStream = externalContext.getResponseOutputStream();
-        rssService.generateRss(announcementService.getAllRss(), url, "Hlášení rozhlasu, Obec Tršice", outputStream);
+        rssService.generateRss(announcementService.getAllRss(), url, 
+            "Hlášení rozhlasu, Obec Tršice", outputStream, feedUrl);
         outputStream.close();
         facesContext.responseComplete();
     }

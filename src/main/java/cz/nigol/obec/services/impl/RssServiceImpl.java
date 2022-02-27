@@ -1,26 +1,19 @@
 package cz.nigol.obec.services.impl;
 
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.List;
+import java.io.*;
+import java.text.*;
+import java.util.*;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.logging.Log;
-import org.w3c.dom.DOMException;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.w3c.dom.*;
 
 import cz.nigol.obec.entities.Settings;
 import cz.nigol.obec.entities.interfaces.RssItem;
@@ -36,12 +29,13 @@ public class RssServiceImpl implements RssService {
     private Settings settings;
 
     @Override
-    public void generateRss(List<RssItem> items, String url, String title, OutputStream outputStream) {
+    public void generateRss(List<RssItem> items, String url, String title, 
+            OutputStream outputStream, String feedUrl) {
         DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
             Document document = documentBuilder.newDocument();
-            prepareRssDocument(document, items, url, title);
+            prepareRssDocument(document, items, url, title, feedUrl);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
@@ -52,13 +46,25 @@ public class RssServiceImpl implements RssService {
         }
     }
 
-    private void prepareRssDocument(Document document, List<RssItem> items, String url, String title) {
+    private void prepareRssDocument(Document document, List<RssItem> items, 
+            String url, String title, String feedUrl) {
+        // Namespace atomNs = Namespace.getNamespace("atom", 
+        //     "http://www.w3.org/2005/Atom");
         Element rootElement = document.createElement("rss");
         rootElement.setAttribute("version", "2.0");
-        Element element = document.createElement("channel");
-        rootElement.appendChild(element);
-        prepareRssHeader(element, document, title);
-        prepareRssItems(element, document, items, url);
+        rootElement.setAttributeNS("http://www.w3.org/2000/xmlns/", 
+            "xmlns:atom", "http://www.w3.org/2005/Atom");
+        Element channelElement = document.createElement("channel");
+        rootElement.appendChild(channelElement);
+        Element linkElement = document.createElementNS("http://www.w3.org/2005/Atom", 
+            "link");
+        linkElement.setPrefix("atom");
+        linkElement.setAttribute("href", feedUrl);
+        linkElement.setAttribute("rel", "self");
+        linkElement.setAttribute("type", "application/rss+xml");
+        channelElement.appendChild(linkElement);
+        prepareRssHeader(channelElement, document, title);
+        prepareRssItems(channelElement, document, items, url);
         document.appendChild(rootElement);
     }
 
@@ -85,15 +91,18 @@ public class RssServiceImpl implements RssService {
         element.appendChild(document.createTextNode(itemUrl));
         root.appendChild(element);
         element = document.createElement("guid");
-        element.appendChild(document.createTextNode(item.getGuid()));
+        element.setAttribute("isPermaLink", "false");
+        element.appendChild(document.createTextNode(itemUrl));
         root.appendChild(element);
         element = document.createElement("description");
         element.appendChild(document.createTextNode(item.getDescription()));
         root.appendChild(element);
         element = document.createElement("pubDate");
-        DateFormat formatter = new SimpleDateFormat("EEE, d MMM yyyy");
-        element.appendChild(document.createTextNode(formatter.format(item.getDate()) 
-                    + " 00:00:00 GMT"));
+        DateFormat formatter = new SimpleDateFormat("EEE, d MMM yyyy", 
+            Locale.US);
+        element.appendChild(document
+            .createTextNode(formatter.format(item.getDate()) 
+                + " 00:00:00 GMT"));
         root.appendChild(element);
     }
 
