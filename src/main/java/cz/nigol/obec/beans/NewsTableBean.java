@@ -47,11 +47,13 @@ public class NewsTableBean implements Serializable {
 
     private void generateRssChannel() throws IOException {
         String url = settings.getBaseUrl() + "/obec/aktuality/detail.jsf?id=";
+        String feedUrl = settings.getBaseUrl() + "/obec/aktuality/aktuality.jsf?rss=true";
         ExternalContext externalContext = facesContext.getExternalContext();
         externalContext.responseReset();
         externalContext.setResponseContentType("application/rss+xml");
         OutputStream outputStream = externalContext.getResponseOutputStream();
-        rssService.generateRss(newsService.getAllRss(), url, "Aktuality, Obec Tršice", outputStream);
+        rssService.generateRss(newsService.getAllRss(), url, 
+            "Aktuality, Obec Tršice", outputStream, feedUrl);
         outputStream.close();
         facesContext.responseComplete();
     }
