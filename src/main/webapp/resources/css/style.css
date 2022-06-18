@@ -137,6 +137,7 @@ input {
     border: 0px #fff solid !important;
     border-bottom: 1px solid #aaa !important;
     box-shadow: none !important;
+    background-color: #f6f6f6 !important;
 }
 
 button.ui-button {
