@@ -34,7 +34,7 @@ h4 {
 }
 
 h4 i {
-    color: rgb(0, 154, 206) !important;
+    color: #1f4a99 !important;
 }
 
 h5 {
@@ -234,12 +234,12 @@ button.ui-button.ui-state-default {
 }
 
 .moreInfoLink a {
-    color: rgb(0, 154, 206);
+    color: #1f4a99;
     font-weight: bold;
 }
 
 .moreInfoLink a:visited {
-    color: rgb(0, 154, 206);
+    color: #1f4a99;
     font-weight: bold;
 }
 
