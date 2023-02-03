@@ -25,12 +25,14 @@ public class CouncillorAdminBean implements Serializable {
     private List<Councillor> councillors;
     private Councillor councillor;
     private User user;
+    private int rowsPerPage = 5;
 
     @PostConstruct
     public void init() {
         electionPeriods = councillorService.getAllElectionPeriods();    
         if (electionPeriods.size() != 0) {
-            electionPeriod = electionPeriods.get(0);     
+            electionPeriod = electionPeriods.get(0);
+            rowsPerPage = electionPeriod.getCouncillors().size();
         }
         councillors = councillorService.getAllCouncillors();
     }
@@ -63,6 +65,10 @@ public class CouncillorAdminBean implements Serializable {
 
     public List<User> completeUser(String query) {
         return userService.findUsersByFullName(query);     
+    }
+    
+    public int getRowsPerPage() {
+        return rowsPerPage;
     }
 
     public User getUser() {

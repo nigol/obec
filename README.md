@@ -38,6 +38,7 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 ### Verze 1.8
 
 * Copyright v patičce lze upravovat v nastavení.
+* Administrace zastupitelů - počet položen a stránce je nastaven na počet členů zastupitelstva.
 
 ### Verze 1.7.7
 

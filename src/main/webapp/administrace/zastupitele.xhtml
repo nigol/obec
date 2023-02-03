@@ -32,7 +32,7 @@
                             selectionMode="single"
                             selection="#{councillorAdminBean.councillor}"
                             rowKey="#{councillor.id}"
-                            rows="5"
+                            rows="#{councillorAdminBean.rowsPerPage}"
                             paginator="true"
                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                             paginatorPosition="bottom"
