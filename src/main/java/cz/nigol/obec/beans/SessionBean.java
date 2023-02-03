@@ -10,9 +10,7 @@ import javax.inject.Named;
 
 import cz.nigol.obec.beans.admin.SettingsBean;
 import cz.nigol.obec.dev.PrepareDevData;
-import cz.nigol.obec.entities.Path;
-import cz.nigol.obec.entities.Settings;
-import cz.nigol.obec.entities.User;
+import cz.nigol.obec.entities.*;
 import cz.nigol.obec.services.SettingsService;
 
 @Named

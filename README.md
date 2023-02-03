@@ -35,6 +35,10 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8
+
+* Copyright v patičce lze upravovat v nastavení.
+
 ### Verze 1.7.7
 
 * Oprava generování RSS feedů.
