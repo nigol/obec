@@ -4,22 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import cz.nigol.obec.enums.OfficialDeskCategory;
+import cz.nigol.obec.entities.interfaces.RssItem;
 
 @NamedQueries({
 @NamedQuery(name=DeskItem.GET_ALL,
@@ -33,7 +21,7 @@ query="SELECT d FROM DeskItem d ORDER BY d.activeFrom DESC"),
 })
 @Entity
 @Table(name="OB_DESK_ITEM")
-public class DeskItem implements Serializable {
+public class DeskItem implements Serializable, RssItem {
     private static final long serialVersionUID = 8396396135912529543L;
 
     public static final String GET_ALL = "DeskItem.GET_ALL";
@@ -71,6 +59,27 @@ public class DeskItem implements Serializable {
     @Column(name="CATEGORY")
     @Enumerated(EnumType.STRING)
     private OfficialDeskCategory category;
+
+
+    @Override
+    public String getLabel() {
+        return "Úřední deska, " + id;
+    }
+
+    @Override
+    public String getDescription() {
+        return body;
+    }
+
+    @Override
+    public Date getDate() {
+        return createdAt;
+    }
+
+    @Override
+    public String getGuid() {
+        return "" + id;
+    }
 
     /**
      * @return the id

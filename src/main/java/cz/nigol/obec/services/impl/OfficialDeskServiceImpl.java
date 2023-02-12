@@ -1,8 +1,6 @@
 package cz.nigol.obec.services.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import cz.nigol.obec.entities.DeskItem;
+import cz.nigol.obec.entities.interfaces.*;
 import cz.nigol.obec.enums.OfficialDeskCategory;
 import cz.nigol.obec.services.OfficialDeskService;
 
@@ -67,6 +66,12 @@ public class OfficialDeskServiceImpl implements OfficialDeskService {
                 DeskItem.class);
         typedQuery.setParameter(DeskItem.CATEGORY_PARAM, category);
         typedQuery.setParameter(DeskItem.DATE_PARAM, date);
+        return new ArrayList<>(typedQuery.getResultList());
+    }
+
+    @Override
+    public List<RssItem> getAllRss() {
+        TypedQuery<RssItem> typedQuery = em.createNamedQuery(DeskItem.GET_ALL, RssItem.class);
         return new ArrayList<>(typedQuery.getResultList());
     }
 }

@@ -1,8 +1,6 @@
 package cz.nigol.obec.beans;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
