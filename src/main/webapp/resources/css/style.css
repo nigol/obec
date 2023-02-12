@@ -34,7 +34,7 @@ h4 {
 }
 
 h4 i {
-    color: rgb(0, 154, 206) !important;
+    color: #1f4a99 !important;
 }
 
 h5 {
@@ -137,6 +137,7 @@ input {
     border: 0px #fff solid !important;
     border-bottom: 1px solid #aaa !important;
     box-shadow: none !important;
+    background-color: #f6f6f6 !important;
 }
 
 button.ui-button {
@@ -233,14 +234,55 @@ button.ui-button.ui-state-default {
     margin-top: -6px !important;
 }
 
+.moreInfoLink {
+    display: inline-block;
+    border: 1px solid #1f4a99;
+    font-weight: normal;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .moreInfoLink a {
-    color: rgb(0, 154, 206);
-    font-weight: bold;
+    color: #1f4a99;
+    text-decoration: none;
 }
 
 .moreInfoLink a:visited {
-    color: rgb(0, 154, 206);
-    font-weight: bold;
+    color: #1f4a99;
+    text-decoration: none;
+}
+
+.backLink {
+    display: inline-block;
+    border: 1px solid #1f4a99;
+    font-weight: normal;
+    color: #1f4a99;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.backLink a {
+    color: #1f4a99;
+    text-decoration: none;
+    color: #1f4a99;
+}
+
+.backLink a:visited {
+    color: #1f4a99;
+    text-decoration: none;
+    color: #1f4a99;
 }
 
 .zpravodajRss h6 {

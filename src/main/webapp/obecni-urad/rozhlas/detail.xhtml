@@ -42,12 +42,15 @@
             </div>
 
             <p>
-                <h:link outcome="/obecni-urad/rozhlas/hlaseni.xhtml" value="Archiv hlášení"/>
-                &#160;
                 <p:commandLink title="Tisk">
                     <i class="fa fa-print"></i>
                     <p:printer target="printingArea"/>
                 </p:commandLink>
             </p>
+            
+            <p style="text-align: center">
+                <h:link class="backLink" 
+                    outcome="/obecni-urad/rozhlas/hlaseni.xhtml" value="Archiv hlášení"/>
+                </p>
         </ui:define>
     </ui:composition>

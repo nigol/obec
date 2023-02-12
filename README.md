@@ -35,6 +35,14 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8
+
+* Copyright v patičce lze upravovat v nastavení.
+* Administrace zastupitelů - počet položek na stránce je nastaven na počet členů zastupitelstva.
+* Redesign některých prvků, především na úvodní stránce.
+* Přidán RSS kanál pro úřední desku.
+* Při editaci článku se ukládá, jestli je editován jako HTML nebo formátovaný text.
+
 ### Verze 1.7.7
 
 * Oprava generování RSS feedů.

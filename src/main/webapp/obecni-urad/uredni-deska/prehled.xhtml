@@ -6,6 +6,12 @@
         template="/WEB-INF/templates/template.xhtml"
         xmlns:p="http://primefaces.org/ui">
 
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="rss" value="#{officialDeskTableBean.rss}"/>
+                <f:viewAction action="#{officialDeskTableBean.onLoad}"/>
+            </f:metadata>
+        </ui:define>
         <ui:param name="title" value="Úřední deska - Obec Tršice"/>
 
         <ui:define name="content">
@@ -59,6 +65,13 @@
                         </p:column>
                     </p:dataTable>
                 </h:form>
+
+                <p>
+                    <h:link outcome="prehled.xhtml">
+                        <f:param name="rss" value="true"/>
+                        <i class="fa fa-rss"></i> RSS
+                    </h:link>
+                </p>
             </p:panelGrid>
             
             <ui:include src="/WEB-INF/includes/article.xhtml">

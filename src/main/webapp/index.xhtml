@@ -49,8 +49,6 @@
             </h:panelGroup>
 
             <p:panelGrid layout="grid" columns="1" styleClass="ui-noborder">
-                <h2>Aktuality</h2>
-
                 <p:dataGrid var="news"
                         value="#{indexBean.newsList}"
                         layout="grid"
@@ -70,7 +68,7 @@
                         <h:link outcome="/obec/aktuality/detail.xhtml" 
                                 style="text-decoration: none">
                             <f:param name="id" value="#{news.id}"/>
-                            <p style="font-size: 120%; font-style: italic; color: #888; padding-left: 1em">
+                            <p style="font-size: 120%; font-style: italic; color: #1f4a99; padding-left: 1em">
                                 #{news.truncatedLabel}
                             </p>
                         </h:link>
@@ -78,20 +76,13 @@
                 </p:dataGrid>
 
                 <h:panelGroup layout="block"
-                        styleClass="moreInfoLink"
-                        style="text-align: right">
-                    <h:link outcome="/obec/aktuality/aktuality.xhtml"
+                        style="text-align: center">
+                    <h:link styleClass="moreInfoLink" 
+                        outcome="/obec/aktuality/aktuality.xhtml"
                             value="VŠECHNY AKTUALITY">
                     </h:link>
                 </h:panelGroup>
-
-                <h:panelGroup layout="block"
-                        styleClass="indexArticle">
-                    <ui:include src="/WEB-INF/includes/article.xhtml">
-                        <ui:param name="articleId" value="/index.jsf"/>
-                    </ui:include>
-                </h:panelGroup>
-
+                
                 <h:panelGroup>
                     <h3 style="margin-bottom: 0px; text-align: center">Potřebuji</h3>
                     <p:panelGrid layout="grid"
@@ -131,6 +122,13 @@
                             </h:panelGroup>
                         </h:link>
                     </p:panelGrid>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block"
+                        styleClass="indexArticle">
+                    <ui:include src="/WEB-INF/includes/article.xhtml">
+                        <ui:param name="articleId" value="/index.jsf"/>
+                    </ui:include>
                 </h:panelGroup>
 
                 <p:panelGrid layout="grid"
@@ -213,9 +211,9 @@
                             </p:dataTable>
                             <br />
                             <h:panelGroup layout="block"
-                                    styleClass="moreInfoLink"
-                                    style="text-align: right">
-                                <h:link outcome="/obecni-urad/rozhlas/hlaseni.xhtml"
+                                    style="text-align: center">
+                                <h:link styleClass="moreInfoLink" 
+                                    outcome="/obecni-urad/rozhlas/hlaseni.xhtml"
                                         value="VÍCE">
                                 </h:link>
                             </h:panelGroup>
@@ -245,9 +243,9 @@
                             </p:dataTable>
                             <br />
                             <h:panelGroup layout="block"
-                                    styleClass="moreInfoLink"
-                                    style="text-align: right">
-                                <h:link outcome="/obecni-urad/uredni-deska/prehled.xhtml"
+                                    style="text-align: center">
+                                <h:link styleClass="moreInfoLink" 
+                                    outcome="/obecni-urad/uredni-deska/prehled.xhtml"
                                         value="VÍCE">
                                 </h:link>
                             </h:panelGroup>

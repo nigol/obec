@@ -4,19 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @NamedQueries({
 @NamedQuery(name=Article.GET_ALL, query="SELECT a FROM Article a ORDER BY a.changedAt DESC"),
@@ -62,6 +50,17 @@ public class Article implements Serializable {
 
     @Column(name="OG_DESCRIPTION", columnDefinition="VARCHAR(1000)")
     private String ogDescription;
+
+    @Column(name="EDIT")
+    private String edit;
+    
+    public String getEdit() {
+        return edit == null ? "Text" : edit;
+    }
+    
+    public void setEdit(String edit) {
+        this.edit= edit;
+    }
 
     /**
      * @return the id

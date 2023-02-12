@@ -11,9 +11,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import cz.nigol.obec.entities.Article;
-import cz.nigol.obec.entities.Settings;
-import cz.nigol.obec.entities.User;
+import cz.nigol.obec.entities.*;
 import cz.nigol.obec.qualifiers.CurrentSettings;
 import cz.nigol.obec.qualifiers.LoggedUser;
 import cz.nigol.obec.services.ArticleService;
@@ -71,6 +69,7 @@ public class ArticlesBean implements Serializable {
 
     public void save() {
         article.setChangedAt(new Date());
+        article.setEdit(edit);
         article.setChangedBy(user);
         articleService.saveArticle(article, body);
         String id = article.getId();
@@ -80,6 +79,7 @@ public class ArticlesBean implements Serializable {
 
     public void onArticleSelect() {
         article = articleService.loadArticleBody(article);
+        edit = article.getEdit();
         body = article.getBody();
     }
 

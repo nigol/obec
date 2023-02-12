@@ -38,6 +38,17 @@ public class Settings implements Serializable {
     @Column(name="WATER_SPEND_PERIOD")
     private String waterSpendPeriod;
     
+    @Column(name="FOOTER_COPYRIGHT")
+    private String footerCopyright;
+    
+    public String getFooterCopyright() {
+        return footerCopyright;
+    }
+    
+    public void setFooterCopyright(String footerCopyright) {
+        this.footerCopyright = footerCopyright;
+    }
+    
     public String getWaterSpendPeriod() {
         return waterSpendPeriod;
     }
