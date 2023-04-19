@@ -128,10 +128,12 @@
                 </h:panelGroup>
             </p:panelGrid>
 
-            <h:link outcome="/index.xhtml">
-                <p>
-                    Zpět na úvodní stránku
-                </p>
-            </h:link>
+            <h:panelGroup layout="block"
+                        style="text-align: center">
+                    <h:link styleClass="moreInfoLink" 
+                        outcome="/index.xhtml"
+                            value="Zpět na úvodní stránku">
+                    </h:link>
+                </h:panelGroup>
         </ui:define>
     </ui:composition>
