@@ -11,10 +11,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import cz.nigol.obec.entities.Article;
-import cz.nigol.obec.entities.News;
-import cz.nigol.obec.entities.Settings;
-import cz.nigol.obec.entities.User;
+import cz.nigol.obec.entities.*;
 import cz.nigol.obec.qualifiers.CurrentSettings;
 import cz.nigol.obec.qualifiers.LoggedUser;
 import cz.nigol.obec.services.ArticleService;
@@ -77,6 +74,7 @@ public class NewsBean implements Serializable {
         }
         article.setChangedBy(user);
         article.setBody(body);
+        article.setOgDescription(news.getLabel());
         newsService.save(news);
         String label = news.getLabel();
         news = null;
