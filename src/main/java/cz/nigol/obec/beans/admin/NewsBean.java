@@ -60,11 +60,11 @@ public class NewsBean implements Serializable {
         news.setArticle(new Article());
         news.getArticle().setOgImageUrl(settings.getOgImageUrl());
         newsList.add(news);
-        news.setCreatedAt(new Date());
         body = null;
     }
 
     public void save() {
+        news.setCreatedAt(new Date());
         Article article = news.getArticle();
         article.setChangedAt(news.getCreatedAt());
         if (article.getId() == null) {
