@@ -37,6 +37,8 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ### Verze 1.8.1
 
+* Při vytváření aktuality je možnost prohledávat obrázky použité v minulosti.
+
 ### Verze 1.8
 
 * Copyright v patičce lze upravovat v nastavení.
