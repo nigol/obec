@@ -38,6 +38,7 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 ### Verze 1.8.1
 
 * Při vytváření aktuality je možnost prohledávat obrázky použité v minulosti.
+* Timeout pro session 4 hodiny.
 
 ### Verze 1.8
 
