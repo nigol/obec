@@ -37,7 +37,7 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ### Verze 1.8.2
 
-
+* Důležitá zpráva - administrace.
 
 ### Verze 1.8.1
 
