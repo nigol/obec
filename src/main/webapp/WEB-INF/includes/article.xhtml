@@ -7,8 +7,9 @@
     <f:event type="preRenderComponent" listener="#{articleBean.loadArticle(articleId)}"/>
 
 
+    <ui:param name="ogDescription" value="#{articleBean.article.ogDescription}"/>
     <ui:param name="ogImageUrl" value="#{articleBean.article.ogImageUrl}"/>
-    <ui:param name="ogDescription" value="#{articleBean.article.label}"/>
+    
 
     <div class="articleBody">
         <h:outputText value="#{articleBean.article.body}" escape="false"/>

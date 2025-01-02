@@ -35,6 +35,16 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8.1
+
+* Při vytváření aktuality je možnost prohledávat obrázky použité v minulosti.
+* Timeout pro session 4 hodiny.
+* Obec Tršice na • Obec Tršice.
+* Řazení aktualit podle data aktualizace.
+* robots.txt
+* Nový vzhled pro menu button u desktop verze.
+* Opraveno og:description v aktualitách.
+
 ### Verze 1.8
 
 * Copyright v patičce lze upravovat v nastavení.

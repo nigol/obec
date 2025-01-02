@@ -6,7 +6,7 @@
         template="/WEB-INF/templates/template.xhtml"
         xmlns:p="http://primefaces.org/ui">
 
-        <ui:param name="title" value="Aktuality, administrace - Obec Tršice"/>
+        <ui:param name="title" value="Aktuality, administrace • Obec Tršice"/>
 
         <ui:define name="content">
             <ui:include src="/WEB-INF/includes/editorSettings.xhtml"/>
@@ -110,10 +110,19 @@
                         <f:validateLength maximum="200"/>
                     </p:inputText>
 
-                    <h:link outcome="/clanek.xhtml" target="_blank">
-                        <f:param name="id" value="aktuality-obrazky"/>
-                        Výběr obrázků pro aktuality
-                    </h:link>
+                    <p:commandButton id="pictureButton"
+                            value="OBRÁZKY PRO AKTUALITY"
+                            type="button"/>
+                    <p:overlayPanel id="pictures"
+                            for="pictureButton"
+                            hideEffect="fade"
+                            dynamic="true"
+                            my="left top"
+                            at="left bottom"
+                            style="width: 70%"
+                            modal="false">
+                        <ui:include src="/WEB-INF/includes/newsPicture.xhtml"/>
+                    </p:overlayPanel>
 
                     <p:outputLabel value="Text" for="body"/>
                     <p:textEditor id="body"

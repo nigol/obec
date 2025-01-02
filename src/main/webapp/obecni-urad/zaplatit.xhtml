@@ -13,7 +13,7 @@
         </ui:define>
         <ui:param name="ogImageUrl" value="#{articleBean.article.ogImageUrl}"/>
         <ui:param name="ogDescription" value="#{articleBean.article.ogDescription}"/>
-        <ui:param name="title" value="Potřebuji zaplatit - Obec Tršice"/>
+        <ui:param name="title" value="Potřebuji zaplatit • Obec Tršice"/>
 
         <ui:define name="content">
             <h2>Potřebuji zaplatit</h2>
@@ -25,5 +25,12 @@
             <ui:include src="/WEB-INF/includes/article.xhtml">
                 <ui:param name="articleId" value="/obecni-urad/zaplatit.jsf"/>
             </ui:include>
+
+            <h:panelGroup layout="block"
+                        style="text-align: center">
+                    <h:link styleClass="moreInfoLink" outcome="/index.xhtml"
+                            value="Zpět na úvod">
+                    </h:link>
+                </h:panelGroup>
         </ui:define>
     </ui:composition>

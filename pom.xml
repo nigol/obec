@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cz.nigol</groupId>
     <artifactId>obec</artifactId>
-    <version>1.8</version>
+    <version>1.8.1</version>
     <packaging>war</packaging>
     
     <properties>
@@ -14,7 +14,7 @@
         <repository>  
             <id>prime-repo</id>  
             <name>PrimeFaces Maven Repository</name>  
-            <url>http://repository.primefaces.org</url>  
+            <url>https://repository.primefaces.org</url>  
             <layout>default</layout>  
         </repository>
     </repositories>

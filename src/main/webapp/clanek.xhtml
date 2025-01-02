@@ -13,7 +13,9 @@
             </f:metadata>
         </ui:define>
 
-        <ui:param name="title" value="#{articleBean.article.label} - Obec Tršice"/>
+        <ui:param name="title" value="#{articleBean.article.label} • Obec Tršice"/>
+        <ui:param name="ogDescription" value="#{articleBean.article.ogDescription}"/>
+        <ui:param name="ogImageUrl" value="#{articleBean.article.ogImageUrl}"/>
 
         <ui:define name="content">
             <h2>#{articleBean.article.label}</h2>

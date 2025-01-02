@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="newsPictureForm">
+        <p:panelGrid layout="grid" columns="5" styleClass="ui-noborder">
+            <p:inputText value="#{newsTableBean.search}" placeholder="Hledat aktualitu.">
+                <p:ajax event="keyup" listener="#{newsTableBean.filter}" update="newsPicture" />
+            </p:inputText>
+        </p:panelGrid>
+
+        <p:dataGrid value="#{newsTableBean.newsFilter}" var="news" columns="3" rows="6" layout="grid" paginator="true"
+            paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+            emptyMessage="Nenalezen žádný výsledek." id="newsPicture">
+            <p:panelGrid layout="grid" columns="1" style="border: 1px #eee solid; border-radius: 3px"
+                styleClass="ui-noborder">
+                <h:outputLink value="#{news.article.ogImageUrl}" target="_blank">
+                    <h:outputText value="#{news.truncatedLabel}" style="font-size: 60%" />
+                </h:outputLink>
+                <h:graphicImage
+                                    value="#{news.article.ogImageUrl}"
+                                    style="width: 100%"
+                                    alt="Foto aktualita"/>
+                <h:inputText value="#{news.article.ogImageUrl}" onfocus="this.select()" style="width: 90%" />
+            </p:panelGrid>
+        </p:dataGrid>
+    </h:form>
+</ui:composition>
