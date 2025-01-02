@@ -41,6 +41,8 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 * Timeout pro session 4 hodiny.
 * Obec Tršice na • Obec Tršice.
 * Řazení aktualit podle data aktualizace.
+* robots.txt
+* Nový vzhled pro menu button u desktop verze.
 
 ### Verze 1.8
 

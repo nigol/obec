@@ -221,6 +221,24 @@ button.ui-button.ui-state-default {
     box-shadow: 0px 1px #e6e6e6 !important;
 }
 
+.menu-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 6px 20px;
+    margin: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.hamburger-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
 .ui-state-highlight {
     background-color: rgb(143, 220, 241) !important;
     color: #222 !important;
