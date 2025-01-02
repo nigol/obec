@@ -35,6 +35,10 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8.2
+
+
+
 ### Verze 1.8.1
 
 * Při vytváření aktuality je možnost prohledávat obrázky použité v minulosti.
