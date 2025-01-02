@@ -43,6 +43,7 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 * Řazení aktualit podle data aktualizace.
 * robots.txt
 * Nový vzhled pro menu button u desktop verze.
+* Opraveno og:description v aktualitách.
 
 ### Verze 1.8
 
