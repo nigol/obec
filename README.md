@@ -13,6 +13,8 @@ Menu jsou uložena v systému jako články (`/administrace/clanky.jsf`) se spec
 * Uživatelské menu pro přihlášeného uživatele `navigace-<název role>`, kde `název role` je název, kterou má uživatelská role vytvořená v administraci rolí `/administrace/role.jsf`. Menu se pak zobrazí všem uživatelům, kteří mají přidělenu tuto roli.
 * Lišta s odkazy pro desktop verzi `bar-navigace`.
 
+Patička webu je uložena v článku `footer`.
+
 Je třeba nastavit správný resource pro přístup k databázi. Aplikace očekává, že bude nastaveno _obecdb_. Toto je možné nastavit buď v souboru _/WEB-INF/resources.xml_ nebo přímo v _tomee.xml_ souboru. Zde je příklad nastavení pro HSQL databázi - v produkci pravděpodobně použijete jinou. 
 Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emailů.
 
@@ -34,6 +36,11 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 ```
 
 ## Changelog
+
+### Verze 1.8.2
+
+* Důležitá zpráva - administrace.
+* Patička webu jako článek.
 
 ### Verze 1.8.1
 
