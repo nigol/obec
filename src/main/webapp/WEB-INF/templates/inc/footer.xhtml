@@ -6,8 +6,8 @@
         xmlns:p="http://primefaces.org/ui">
 
         <footer>
-            <ui:include src="/WEB-INF/includes/article.xhtml">
-                <ui:param name="articleId" value="footer"/>
-            </ui:include>
+            <div class="articleBody">
+                <h:outputText value="#{footerBean.article.body}" escape="false"/>
+            </div>
         </footer>
     </ui:composition>
