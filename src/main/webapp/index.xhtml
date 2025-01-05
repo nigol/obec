@@ -274,25 +274,5 @@
                         </small>
                     </h:panelGroup>
                 </p:panelGrid>
-
-                <div class="zpravodajRss">
-                    <div class="logo">
-                        <h6>Tršický&#160;</h6>
-                        <h:graphicImage library="image" name="erb.png" alt="Erb obce Tršice"/>
-                        <h6>&#160;Zpravodaj</h6>
-                    </div>
-                    <p:separator/>
-                    <p:feedReader value="https://www.trsice.cz/zpravodaj/index.jsf?rss=true" 
-                            var="feed"
-                            size="5">
-                        <h:outputLink value="#{feed.link}">
-                            <h:outputText value="#{feed.title}" 
-                                    style="font-weight: bold;display:block"/>
-                        </h:outputLink>
-                        <f:facet name="error">
-                            Nelze načíst články.
-                        </f:facet>
-                    </p:feedReader>
-                </div>
             </ui:define>
         </ui:composition>
