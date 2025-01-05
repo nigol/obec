@@ -239,6 +239,81 @@ button.ui-button.ui-state-default {
     margin-right: 10px;
 }
 
+figure {
+	margin: 30px auto;
+	width: 128px;
+	height: 111px;
+	background-color: #ffffff;
+	border-radius: 10px;
+    border: 1px dotted #999;
+	position: relative;
+	
+	&:before {
+		content: '';
+		display: block;
+		width:128px;
+		height: 69px;
+		border-radius: 10px 10px 0 0;
+		background-image: -webkit-linear-gradient(white 0%, #edeeef 100%); 
+		background-image: -moz-linear-gradient(white 0%, #edeeef 100%); 
+		background-image: -o-linear-gradient(white 0%, #edeeef 100%); 
+		background-image: linear-gradient(white 0%, #edeeef 100%);
+	}
+	
+	header {
+		width: 128px;
+		height: 27px;
+		position: absolute;
+		top: -1px;
+		background-color: #fa565a;
+		border-radius: 10px 10px 0 0;
+		border-bottom: 3px solid #e5e5e5;
+		font: 400 15px/27px Arial, Helvetica, Geneva, sans-serif;
+		letter-spacing: 0.5px;
+		color: #fff;
+		text-align: center;
+	}
+	
+	section {
+		width: 128px;
+		height: 80px;
+		position: absolute;
+		top: 28px;
+		font: 400 55px/75px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		letter-spacing: -2px;
+		color: #4c566b;
+		text-align: center;
+		z-index: 10;
+		
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 35px;
+			width: 3px;
+			height: 10px;
+			background-image: -webkit-linear-gradient(#b5bdc5 0%, #e5e5e5 100%); 
+			background-image: -moz-linear-gradient(#b5bdc5 0%, #e5e5e5 100%); 
+			background-image: -o-linear-gradient(#b5bdc5 0%, #e5e5e5 100%); 
+			background-image: linear-gradient(#b5bdc5 0%, #e5e5e5 100%);
+		}
+		
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 35px;
+			right: 0;
+			width: 3px;
+			height: 10px;
+			background-image: -webkit-linear-gradient(#b5bdc5 0%, #e5e5e5 100%); 
+			background-image: -moz-linear-gradient(#b5bdc5 0%, #e5e5e5 100%); 
+			background-image: -o-linear-gradient(#b5bdc5 0%, #e5e5e5 100%); 
+			background-image: linear-gradient(#b5bdc5 0%, #e5e5e5 100%);
+		}
+	}
+}
+
 .ui-state-highlight {
     background-color: rgb(143, 220, 241) !important;
     color: #222 !important;
@@ -581,47 +656,6 @@ button.ui-button.ui-state-default {
     top: 0px;
     left: 0px;
     z-index: 1000;
-}
-
-.date {
-    position: relative;
-    width: 70px;
-    font-family: Georgia, serif;
-    color: #999;
-    margin: 0 auto;
-}
-
-.day, .month, .year {
-    position: absolute;
-}
-
-.day { 
-    font-size: 30px;
-    top: 15px;
-}
-
-.month { 
-    top: 0;
-    left: 0;
-    font-size: 10px;
-    margin-top: 5px;
-}
-
-.year { 
-    top: 19px;
-    right: 0;
-    font-size: 20px;
-    transform: rotate(90deg);
-}
-
-.events {
-    width: 100%;
-    margin-bottom: 2em;
-    margin-top: -2em;
-}
-
-.events tr {
-    height: 5em;
 }
 
 .ui-menuitem-icon.ui-icon {

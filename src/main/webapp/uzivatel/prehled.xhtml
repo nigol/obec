@@ -80,35 +80,33 @@
                     </h:panelGroup>
                     
                     <h:panelGroup rendered="#{!empty userOverviewBean.event}">
-                        <table class="events">
-                            <tr>
-                                <td>
-                                    <h:link outcome="/akce.xhtml">
-                                        <f:param name="ical" value="true"/>
-                                        <f:param name="id" value="#{userOverviewBean.event.id}"/>
-                                        <h:panelGroup layout="block" styleClass="date">
-                                            <h:outputText value="#{userOverviewBean.event.startDate}" styleClass="day">
-                                                <f:convertDateTime type="date" pattern="dd"/>
-                                            </h:outputText>
-                                            <h:outputText value="#{userOverviewBean.event.startDate}" styleClass="month">
+                        <h:link outcome="/akce.xhtml">
+                            <f:param name="ical" value="true"/>
+                            <f:param name="id" value="#{userOverviewBean.event.id}"/>
+                            <h:panelGroup layout="block">
+                                <figure>
+                                    <header>
+                                        <h:outputText value="#{userOverviewBean.event.startDate}">
                                                 <f:convertDateTime locale="cs_CZ" type="date" pattern="LLLL"/>
-                                            </h:outputText>
-                                            <h:outputText value="#{userOverviewBean.event.startDate}" styleClass="year">
-                                                <f:convertDateTime type="date" pattern="yyyy"/>
-                                            </h:outputText>
-                                        </h:panelGroup>
-                                    </h:link>
-                                </td>
-                                <td style="vertical-align: bottom">
-                                    <h:outputText value="#{userOverviewBean.event.description}"
-                                            rendered="#{empty userOverviewBean.event.link}"/>
-                                    <h:outputLink value="#{userOverviewBean.event.link}"
-                                            rendered="#{!empty userOverviewBean.event.link}">
-                                        #{userOverviewBean.event.description}
-                                    </h:outputLink>
-                                </td>
-                            </tr>
-                        </table>
+                                        </h:outputText>
+                                    </header>
+                                    <section>
+                                        <h:outputText value="#{userOverviewBean.event.startDate}">
+                                                <f:convertDateTime type="date" pattern="d"/>
+                                        </h:outputText>
+                                    </section>
+                                </figure>
+                            </h:panelGroup>
+                        </h:link>
+
+                        <center>
+                            <h:outputText value="#{userOverviewBean.event.description}"
+                                rendered="#{empty userOverviewBean.event.link}"/>
+                            <h:outputLink value="#{userOverviewBean.event.link}"
+                                rendered="#{!empty userOverviewBean.event.link}">
+                                #{userOverviewBean.event.description}
+                            </h:outputLink>
+                        </center>
                     </h:panelGroup>
 
                     <h:panelGroup rendered="#{!empty userOverviewBean.newsList}">
@@ -124,9 +122,10 @@
                         </ui:repeat>
                     </ol>
                     </h:panelGroup>
-
                 </h:panelGroup>
             </p:panelGrid>
+            
+            <br/>
 
             <h:panelGroup layout="block"
                         style="text-align: center">

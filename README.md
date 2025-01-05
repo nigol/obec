@@ -37,6 +37,12 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8.3
+
+* Odstraněna RSS upoutávka na Zpravodaj.
+* Změněna grafická reprezentace kalendáře pro Akce na úvodní straně.
+* Oprava - Patička webu jako článek.
+
 ### Verze 1.8.2
 
 * Důležitá zpráva - administrace.
