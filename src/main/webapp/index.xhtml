@@ -147,41 +147,35 @@
                         </h:link>
 
                         <h:panelGroup layout="block">
-                            <h4>
-                                <i class="fa fa-calendar"></i>
-                            </h4>
-                            <h5>Nejbližší akce</h5>
-                            <table class="events">
                                 <ui:repeat value="#{indexBean.events}" var="event">
-                                    <tr>
-                                        <td>
-                                            <h:link outcome="akce.xhtml">
-                                                <f:param name="ical" value="true"/>
-                                                <f:param name="id" value="#{event.id}"/>
-                                                <h:panelGroup layout="block" styleClass="date">
-                                                    <h:outputText value="#{event.startDate}" styleClass="day">
-                                                        <f:convertDateTime type="date" pattern="dd"/>
+                                    <h:link outcome="akce.xhtml">
+                                        <f:param name="ical" value="true"/>
+                                        <f:param name="id" value="#{event.id}"/>
+                                        <h:panelGroup layout="block">
+                                            <figure>
+                                                <header>
+                                                    <h:outputText value="#{event.startDate}">
+                                                            <f:convertDateTime locale="cs_CZ" type="date" pattern="LLLL"/>
                                                     </h:outputText>
-                                                    <h:outputText value="#{event.startDate}" styleClass="month">
-                                                        <f:convertDateTime locale="cs_CZ" type="date" pattern="LLLL"/>
+                                                </header>
+                                                <section>
+                                                    <h:outputText value="#{event.startDate}">
+                                                            <f:convertDateTime type="date" pattern="d"/>
                                                     </h:outputText>
-                                                    <h:outputText value="#{event.startDate}" styleClass="year">
-                                                        <f:convertDateTime type="date" pattern="yyyy"/>
-                                                    </h:outputText>
-                                                </h:panelGroup>
-                                            </h:link>
-                                        </td>
-                                        <td style="vertical-align: bottom">
-                                            <h:outputText value="#{event.description}"
-                                                    rendered="#{empty event.link}"/>
-                                            <h:outputLink value="#{event.link}"
-                                                    rendered="#{!empty event.link}">
-                                                #{event.description}
-                                            </h:outputLink>
-                                        </td>
-                                    </tr>
+                                                </section>
+                                            </figure>
+                                        </h:panelGroup>
+                                    </h:link>
+
+                                    <center>
+                                        <h:outputText value="#{event.description}"
+                                            rendered="#{empty event.link}"/>
+                                        <h:outputLink value="#{event.link}"
+                                            rendered="#{!empty event.link}">
+                                            #{event.description}
+                                        </h:outputLink>
+                                    </center>
                                 </ui:repeat>
-                            </table>
                         </h:panelGroup>
                     </p:panelGrid>
 

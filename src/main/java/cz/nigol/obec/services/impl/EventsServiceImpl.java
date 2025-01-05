@@ -43,7 +43,7 @@ public class EventsServiceImpl implements EventsService {
             .atZone(ZoneId.systemDefault())
             .toInstant());
         typedQuery.setParameter(Event.DATE_PARAM, date);
-        typedQuery.setMaxResults(5);
+        typedQuery.setMaxResults(2);
         return new ArrayList<>(typedQuery.getResultList());
     }
 
