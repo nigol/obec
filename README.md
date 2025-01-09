@@ -37,6 +37,8 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8.4
+
 ### Verze 1.8.3
 
 * Odstraněna RSS upoutávka na Zpravodaj.
