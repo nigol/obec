@@ -39,6 +39,8 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ### Verze 1.8.4
 
+* Změněno CSS pro výchozí článek na úvodní stránce.
+
 ### Verze 1.8.3
 
 * Odstraněna RSS upoutávka na Zpravodaj.
