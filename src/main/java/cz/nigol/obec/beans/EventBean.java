@@ -1,14 +1,13 @@
 package cz.nigol.obec.beans;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.*;
 import java.nio.charset.Charset;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.faces.context.*;
+import javax.inject.*;
 
 import cz.nigol.obec.entities.Event;
 import cz.nigol.obec.services.EventsService;
@@ -23,7 +22,13 @@ public class EventBean {
     private String ical;
     private String id;
     private Event event;
+    private List<Event> events;
 
+    @PostConstruct
+    public void init() {
+        events = eventsService.getValidToDate(new Date(), 100);
+    }
+    
     public void onLoad() throws IOException {
         event = eventsService.getById(Long.parseLong(id));
         if (event != null && ical != null && "true".equals(ical)) {
@@ -40,6 +45,10 @@ public class EventBean {
         outputStream.write(eventsService.getAsIcal(event).getBytes(Charset.forName("UTF-8")));
         outputStream.close();
         facesContext.responseComplete();
+    }
+    
+    public List<Event> getEvents() {
+        return this.events;
     }
 
     /**

@@ -33,7 +33,7 @@ public class EventsServiceImpl implements EventsService {
     }
 
     @Override
-    public List<Event> getValidToDate(Date date) {
+    public List<Event> getValidToDate(Date date, int count) {
         TypedQuery<Event> typedQuery = em.createNamedQuery(Event.GET_VALID_TO_DATE, Event.class);
         LocalDate localDate = date.toInstant()
             .atZone(ZoneId.systemDefault())
@@ -43,7 +43,7 @@ public class EventsServiceImpl implements EventsService {
             .atZone(ZoneId.systemDefault())
             .toInstant());
         typedQuery.setParameter(Event.DATE_PARAM, date);
-        typedQuery.setMaxResults(2);
+        typedQuery.setMaxResults(count);
         return new ArrayList<>(typedQuery.getResultList());
     }
 

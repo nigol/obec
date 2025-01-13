@@ -42,7 +42,7 @@ public class IndexBean {
         newsList = newsService.getFeaturedByDate(new Date());
         announcements = announcementService.getLastTen();
         deskItems = officialDeskService.getTenActiveDeskItemsFor(new Date());
-        events = eventsService.getValidToDate(new Date());
+        events = eventsService.getValidToDate(new Date(), 2);
         galleryPhotos = settingsService.processGalleryUrls(settings);
         nameOfPhoto = preparePhoto(galleryPhotos.size());
         poll = pollService.getActivePoll();
