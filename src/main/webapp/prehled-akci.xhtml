@@ -11,9 +11,39 @@
         <ui:define name="content">
             <h2>Přehled plánovaných akcí</h2>
 
-            <h:form>
-            
-            </h:form>
+            <p:dataGrid var="event"
+                        value="#{eventBean.events}"
+                        layout="grid"
+                        columns="4">
+                        
+                <h:link outcome="akce.xhtml">
+                    <f:param name="ical" value="true"/>
+                    <f:param name="id" value="#{event.id}"/>
+                    <h:panelGroup layout="block">
+                        <figure>
+                            <header>
+                                <h:outputText value="#{event.startDate}">
+                                        <f:convertDateTime locale="cs_CZ" type="date" pattern="LLLL"/>
+                                </h:outputText>
+                            </header>
+                            <section>
+                                <h:outputText value="#{event.startDate}">
+                                        <f:convertDateTime type="date" pattern="d"/>
+                                </h:outputText>
+                            </section>
+                        </figure>
+                    </h:panelGroup>
+                </h:link>
+
+                <center>
+                    <h:outputText value="#{event.description}"
+                        rendered="#{empty event.link}"/>
+                    <h:outputLink value="#{event.link}"
+                        rendered="#{!empty event.link}">
+                        #{event.description}
+                    </h:outputLink>
+                </center>
+            </p:dataGrid>
             
             <br/>
 
