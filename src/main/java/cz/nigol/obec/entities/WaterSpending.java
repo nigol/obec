@@ -7,6 +7,7 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name=WaterSpending.GET_ALL, query="SELECT w FROM WaterSpending w ORDER BY w.houseNumber"),
     @NamedQuery(name=WaterSpending.GET_BY_PERIOD, query="SELECT w FROM WaterSpending w WHERE w.period = :period ORDER BY w.houseNumber"),
+    @NamedQuery(name=WaterSpending.GET_PERIODS, query="SELECT w.period FROM WaterSpending w GROUP BY w.period"),
 })
 @Entity
 @Table(name="OB_WATER_SPENDING")
@@ -15,6 +16,7 @@ public class WaterSpending implements Serializable {
 
     public static final String GET_ALL = "WaterSpending.GET_ALL";
     public static final String GET_BY_PERIOD = "WaterSpending.GET_BY_PERIOD";
+    public static final String GET_PERIODS = "WaterSpending.GET_PERIODS";
     
     public static final String PERIOD_PARAM = "period";
 

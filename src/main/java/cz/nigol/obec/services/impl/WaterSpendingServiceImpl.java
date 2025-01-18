@@ -28,4 +28,10 @@ public class WaterSpendingServiceImpl implements WaterSpendingService {
         typedQuery.setParameter(WaterSpending.PERIOD_PARAM, period);
         return typedQuery.getResultList();
     }
+    
+    @Override
+    public List<String> getAllPeriods() {
+        TypedQuery<String> typedQuery = em.createNamedQuery(WaterSpending.GET_PERIODS, String.class);
+        return typedQuery.getResultList();
+    }
 }

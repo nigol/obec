@@ -41,6 +41,8 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 * Změněno CSS pro výchozí článek na úvodní stránce.
 * Stránka s akcemi.
+* Lazy loading obrázků u aktualit na úvodní stránce.
+* Administrace hlášení vodoměrů - prohlížení období.
 
 ### Verze 1.8.3
 
