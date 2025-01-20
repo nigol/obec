@@ -19,12 +19,16 @@
                 </center>
                 
                 <p>
-                    〰 
-                    <ui:repeat value="#{waterSpendingsBean.periods}" var="period">
-                        <h:commandLink value="#{period}"
-                            action="#{waterSpendingsBean.onPeriodSelect(period)}"/>
-                         〰
-                    </ui:repeat>
+                    <center>
+                        <span style="color:#eee;">⸺ </span>
+                        <ui:repeat value="#{waterSpendingsBean.periods}" var="period">
+                            <h:commandLink value="#{period}"
+                                action="#{waterSpendingsBean.onPeriodSelect(period)}">
+                                <f:ajax render="@form"/>
+                            </h:commandLink>
+                            <span style="color:#eee;"> ⸺</span>
+                        </ui:repeat>
+                    </center>
                 </p>
                 
                 <h:commandLink>
