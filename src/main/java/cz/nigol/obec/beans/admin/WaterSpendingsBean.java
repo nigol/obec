@@ -9,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.annotation.*;
 import cz.nigol.obec.entities.*;
 import cz.nigol.obec.services.*;
-import cz.nigol.obec.qualifiers.*;
 
 @Named
 @ViewScoped
@@ -19,21 +18,34 @@ public class WaterSpendingsBean implements Serializable {
     private WaterSpendingService waterSpendingService;
     @Inject
     private FacesContext facesContext;
-    @Inject
-    @CurrentSettings
     private Settings settings;
     private List<WaterSpending> waterSpendings;
+    private List<String> periods;
+    private String period = "";
 
     @PostConstruct
     public void init() {
-        waterSpendings = waterSpendingService.getWaterSpendingsByPeriod(settings.getWaterSpendPeriod());
+        periods = waterSpendingService.getAllPeriods();
+        if (periods.size() > 0) {
+            period = periods.get(0);
+        }
+        waterSpendings = waterSpendingService.getWaterSpendingsByPeriod(period);
+    }
+    
+    public void onPeriodSelect(String period) {
+        this.period = period;
+        waterSpendings = waterSpendingService.getWaterSpendingsByPeriod(period);
+    }
+    
+    public String getPeriod() {
+        return this.period;
+    }
+    
+    public List<String> getPeriods() {
+        return this.periods;
     }
 
     public List<WaterSpending> getWaterSpendings() {
         return waterSpendings;
-    }
-
-    public void setWaterSpendings(List<WaterSpending> waterSpendings) {
-        this.waterSpendings = waterSpendings;
     }
 }

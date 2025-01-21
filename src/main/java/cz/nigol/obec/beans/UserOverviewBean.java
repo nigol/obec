@@ -42,7 +42,7 @@ public class UserOverviewBean implements Serializable {
         if (!announcements.isEmpty()) {
             announcement = announcements.get(0);
         }
-        List<Event> events = eventsService.getValidToDate(new Date());
+        List<Event> events = eventsService.getValidToDate(new Date(), 1);
         if (!events.isEmpty()) {
             event = events.get(0);
         }
