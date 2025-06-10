@@ -37,6 +37,10 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8.5
+
+* Při zadávání zasedání zastupitelstva nabízí jen zastupitele z aktuálního období.
+
 ### Verze 1.8.4
 
 * Změněno CSS pro výchozí článek na úvodní stránce.

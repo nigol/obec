@@ -32,7 +32,6 @@ public class CouncilMeetingAdminBean implements Serializable {
             electionPeriod = electionPeriods.get(0);     
             councillors = electionPeriod.getCouncillors();
         }
-        councillors = councillorService.getAllCouncillors();
         councilMeetings = councillorService.getAllCouncilMeetings();
     }
 
