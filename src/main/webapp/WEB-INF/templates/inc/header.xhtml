@@ -10,11 +10,11 @@
                 <h:link outcome="/prihlaseni.xhtml"
                         value="PŘIHLÁSIT"
                         rendered="#{empty sessionBean.user}"
-                        style="text-decoration: none; color: #fff; font-weight: bold; position: absolute; top: 50px; right: 10px; text-shadow: 2px 2px 5px #000; background: rgba(0,0,0,.6); display: inline-block; padding: 1em; border: 1px solid #fff; border-radius: 30px">
+                        style="text-decoration: none; color: #fff; font-weight: bold; position: absolute; top: 50px; right: 10px; display: inline-block; padding: 1em; border-radius: 30px; background: rgba(255, 255, 255, 0.2); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(2.1px); -webkit-backdrop-filter: blur(2.1px); border: 1px solid rgba(255, 255, 255, 0.3);">
                 </h:link>
                 <h:panelGroup layout="block" 
                     rendered="#{!empty sessionBean.user}"
-                    style="position: absolute; top: 50px; right: 10px; background: rgba(0,0,0,.6); display: inline-block; padding: 1em; border: 1px solid #fff; border-radius: 30px">
+                    style="text-decoration: none; color: #fff; font-weight: bold; position: absolute; top: 50px; right: 10px; display: inline-block; padding: 1em; border-radius: 30px; background: rgba(255, 255, 255, 0.2); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(2.1px); -webkit-backdrop-filter: blur(2.1px); border: 1px solid rgba(255, 255, 255, 0.3);">
                     <h:link outcome="/uzivatel/prehled.xhtml"
                             value="#{sessionBean.user.fullName} "
                             rendered="#{!empty sessionBean.user}"
