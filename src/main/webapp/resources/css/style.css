@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    border-bottom: 1px solid rgb(230,238,236);
+    border-bottom: 1px solid rgba(31, 74, 153, 0.26);
     color: #666;
     text-align: center;
     font-weight: 800;
@@ -117,32 +117,35 @@ footer .ui-panelgrid-cell {
 .ui-datatable thead th, .ui-datatable tfoot td {
     text-align: center;
     border: 1px solid #fff;
-    background: rgb(230, 238, 236) !important;
+    background: rgba(31, 74, 153, 0.26) !important;
 }
 
 .ui-datatable tbody td {
     border-color: #fff !important;
-    border-bottom: 2px solid rgb(230, 238, 236) !important;
+    border-bottom: 2px solid rgba(31, 74, 153, 0.26) !important;
 }
 
 .ui-datatable .ui-paginator, .ui-datatable .ui-paginator {
     padding: 2px;
-    background: rgb(230, 238, 236) !important;
+    background: rgba(31, 74, 153, 0.26) !important;
     border: none !important;
 }
 
 .ui-paginator {
     padding: 2px;
-    background: rgb(230, 238, 236) !important;
+    background: rgba(31, 74, 153, 0.26) !important;
     border: none !important;
 }
 
 input {
-    border-radius: 0px !important;
-    border: 0px #fff solid !important;
-    border-bottom: 1px solid #aaa !important;
-    box-shadow: none !important;
-    background-color: #f6f6f6 !important;
+    
+
+    background: rgba(31, 74, 153, 0.16) !important;
+    border-radius: 0px 6px 6px 0px !important;
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
 }
 
 button.ui-button {
@@ -194,7 +197,7 @@ button.ui-button {
 }
 
 .ui-buttonset:not(.ui-splitbutton) > .ui-button.ui-state-active:not(.ui-state-disabled) {
-    background: rgb(213,235,238) !important;
+    background: rgba(31, 74, 153, 0.26) !important;
     border-color: rgb(0,113,254) !important;
     color: rgb(0,113,254) !important;
 }  
@@ -213,7 +216,7 @@ button.ui-button span {
 }
 
 button.default {
-    background: rgb(213,235,238) !important;
+    background: rgba(31, 74, 153, 0.26) !important;
     border-color: rgb(0,113,254) !important;
 }
 
@@ -320,7 +323,7 @@ figure {
 }
 
 .ui-state-highlight {
-    background-color: rgb(143, 220, 241) !important;
+    background-color: rgba(31, 74, 153, 0.26) !important;
     color: #222 !important;
 }
 
@@ -383,35 +386,17 @@ figure {
     color: #1f4a99;
 }
 
-.zpravodajRss h6 {
-    color: black;
-    text-align: center;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 2em;
-    font-variant: small-caps;
-    margin-bottom: .1em;
-    margin-top: 0em;
-}
-
-.zpravodajRss img {
-    width: 1.8em;
-    height: 2em;
-    margin-top: .6em;
-}
-
-.zpravodajRss .logo {
-    display: flex;
-    justify-content: center;
-}
-
 .newsBox {
-    background: linear-gradient(to bottom, #f3f3f3, #dde3e8);
-    border-radius: 5px;
     height: 250px;
     overflow: hidden;
     max-width: 200px;
     margin-left: auto;
     margin-right: auto;
+    background: rgba(31, 74, 153, 0.26);
+    border-radius: 0px 0px 16px 16px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .councillorBox {
@@ -431,19 +416,22 @@ figure {
 }
 
 .grayTableBlock {
-    background: linear-gradient(to right, rgb(224, 234, 252), rgb(207, 222, 243));
-    background: #1f4a99;
     padding: 10px;
-    transition: all 0.3s ease;
+    transition: 0.3s;
+    background: rgba(31, 74, 153, 0.26);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(31, 74, 153, 0.3);
 }
 
 .grayTableBlock:hover {
     transform: scaleX(1.03) scaleY(1.03);
-    box-shadow: 4px 4px 4px #888;
 }
 
 .grayTableBlock h5 {
-    color: #ffcc01;
+    color: rgb(31, 74, 153);
 }
 
 .grayTableBlock h4 i {
@@ -656,11 +644,14 @@ figure {
     padding: 0px;
     margin: 0px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
     position: fixed;
     top: 0px;
     left: 0px;
     z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
 }
 
 .ui-menuitem-icon.ui-icon {
@@ -802,22 +793,9 @@ figure {
 }
 
 @media only screen and (max-width: 1599px) {
-    .zpravodajRss {
-        display: none;
-    }
+    
 }
 
 @media only screen and (min-width: 1600px) {
-    .zpravodajRss {
-        position: fixed;
-        top: 300px;
-        right: 50px;
-        width: 230px;
-        line-height: 1.5;
-        background: #fff;
-        box-shadow: 3px 3px 5px #888 !important;
-        border: 1px solid #eee;
-        border-radius: 3px;
-        padding: 1em;
-    }
+   
 }

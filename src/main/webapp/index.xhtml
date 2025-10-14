@@ -87,10 +87,12 @@
                 </h:panelGroup>
                 
                 <h:panelGroup>
-                    <h3 style="margin-bottom: 0px; text-align: center">Potřebuji</h3>
+                  <h3 style="margin-bottom: 0px; text-align: center; text-decoration: underline; text-decoration-color: tomato;">
+		    Potřebuji
+		  </h3>
                     <p:panelGrid layout="grid"
                             columns="3"
-                            style="margin-top: 40px"
+                            style="margin-top: 40px;"
                             styleClass="ui-noborder">
                         <h:link outcome="/obecni-urad/vyridit.xhtml"
                                 style="text-decoration: none">
@@ -125,13 +127,13 @@
                             </h:panelGroup>
                         </h:link>
                     </p:panelGrid>
-                </h:panelGroup>
 
-                <h:panelGroup layout="block"
-                        styleClass="indexArticle">
-                    <ui:include src="/WEB-INF/includes/article.xhtml">
+		    <h:panelGroup layout="block"
+				  styleClass="indexArticle">
+                      <ui:include src="/WEB-INF/includes/article.xhtml">
                         <ui:param name="articleId" value="/index.jsf"/>
-                    </ui:include>
+                      </ui:include>
+                    </h:panelGroup>
                 </h:panelGroup>
 
                 <p:panelGrid layout="grid"
