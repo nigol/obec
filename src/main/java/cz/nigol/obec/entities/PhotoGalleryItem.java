@@ -5,12 +5,18 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
+@NamedQueries({
+@NamedQuery(name=PhotoGalleryItem.GET_ALL, query="SELECT p FROM PhotoGalleryItem p ORDER BY p.id ASC")
+})
 @Entity
 @Table(name = "OB_PHOTOGALLERYITEM")
 public class PhotoGalleryItem implements Serializable {
 	private static final long serialVersionUID = -3262642900499913785L;
 
+	public static final String GET_ALL = "PhotoGalleryItem.GET_ALL";
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "ID")
 	private long id;
 

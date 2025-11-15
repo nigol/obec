@@ -25,6 +25,8 @@ public class IndexBean {
     @Inject
     private PollService pollService;
     @Inject
+    private PhotoGalleryService photoGalleryService;
+    @Inject
     @CurrentSettings
     private Settings settings;
     @Inject
@@ -35,7 +37,7 @@ public class IndexBean {
     private List<Event> events;
     private String nameOfPhoto;
     private Poll poll;
-    private List<String> galleryPhotos;
+    private List<PhotoGalleryItem> photos;
 
     @PostConstruct
     public void init() {
@@ -43,15 +45,15 @@ public class IndexBean {
         announcements = announcementService.getLastTen();
         deskItems = officialDeskService.getTenActiveDeskItemsFor(new Date());
         events = eventsService.getValidToDate(new Date(), 2);
-        galleryPhotos = settingsService.processGalleryUrls(settings);
-        nameOfPhoto = preparePhoto(galleryPhotos.size());
+        photos = photoGalleryService.getAllGalleryItems();
+        nameOfPhoto = preparePhoto(photos.size());
         poll = pollService.getActivePoll();
     }
 
     private String preparePhoto(int numOfPhotos) {
         Random random = new Random();
         int num = random.nextInt(numOfPhotos); 
-        return galleryPhotos.get(num);
+        return photos.get(num).getUrl();
     }
 
     public Settings getSettings() {
