@@ -37,6 +37,14 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8.8
+
+* Menší opravy a změny
+
+### Verze 1.8.7
+
+* Nová fotogalerie.
+
 ### Verze 1.8.6
 
 * Změněno grafické rozhraní do skleněného stylu.

@@ -9,7 +9,26 @@
         <ui:param name="title" value="Fotogalerie • Obec Tršice"/>
 
         <ui:define name="content">
+		<h:outputScript library="script" name="slides.js" />
+		<h:outputStylesheet library="css" name="slides.css" />
+
             <h2>Fotogalerie</h2>
+
+		<center>
+			<div id="slide"></div>
+		</center>
+
+		<script>
+			window.addEventListener("DOMContentLoaded", function() {
+				sslide.init({
+				target: "slide",
+				images: [
+					<h:outputText value="#{photoGalleryShowBean.gallery}" escape="false"/>
+				],
+				auto: 7000 // 7 sec per slide
+			});
+		});
+		</script>
 
             <ui:include src="/WEB-INF/includes/article.xhtml">
                 <ui:param name="articleId" value="/obec/fotogalerie.jsf"/>

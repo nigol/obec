@@ -68,3 +68,6 @@ Disallow: /
 
 User-agent: cohere-ai
 Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /

@@ -1,12 +1,9 @@
 package cz.nigol.obec.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "OB_SETTINGS")
@@ -37,6 +34,18 @@ public class Settings implements Serializable {
     
     @Column(name="WATER_SPEND_PERIOD")
     private String waterSpendPeriod;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
+    @OrderBy("id DESC")
+    private List<PhotoGalleryItem> galleryItems;
+    
+    public List<PhotoGalleryItem> getGalleryItems() {
+        return galleryItems;
+    }
+    
+    public void setGalleryItems(List<PhotoGalleryItem> galleryItems) {
+        this.galleryItems = galleryItems;
+    }
     
     public String getWaterSpendPeriod() {
         return waterSpendPeriod;
@@ -125,7 +134,7 @@ public class Settings implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Settings)) return false;
         Settings settings = (Settings) o;
-        return id == settings.getId();
+        return id != null && id.equals(settings.id);
     }
 
     @Override

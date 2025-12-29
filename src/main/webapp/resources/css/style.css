@@ -196,6 +196,10 @@ button.ui-button {
     box-shadow: 4px 4px 3px #e6e6e6 !important;
 }
 
+#filesButton.ui-button-text-only span {
+	padding: 0em 0em !important;
+}
+
 .ui-buttonset:not(.ui-splitbutton) > .ui-button.ui-state-active:not(.ui-state-disabled) {
     background: rgba(31, 74, 153, 0.26) !important;
     border-color: rgb(0,113,254) !important;
