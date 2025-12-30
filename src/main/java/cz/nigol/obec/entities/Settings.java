@@ -28,9 +28,6 @@ public class Settings implements Serializable {
 
     @Column(name="HEADER_IMAGE_URL")
     private String headerImageUrl;
-
-    @Column(name="GALLERY_URL", columnDefinition="VARCHAR(4000)")
-    private String galleryUrl;
     
     @Column(name="WATER_SPEND_PERIOD")
     private String waterSpendPeriod;
@@ -53,14 +50,6 @@ public class Settings implements Serializable {
     
     public void setWaterSpendPeriod(String waterSpendPeriod) {
         this.waterSpendPeriod = waterSpendPeriod;
-    }
-
-    public String getGalleryUrl() {
-        return galleryUrl;
-    }
-
-    public void setGalleryUrl(String galleryUrl) {
-        this.galleryUrl = galleryUrl;
     }
 
     public String getHeaderImageUrl() {

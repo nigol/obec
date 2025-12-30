@@ -37,6 +37,10 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.8.9
+
+* Odebrána původní administrace fotek do galerie. 
+
 ### Verze 1.8.8
 
 * Menší opravy a změny
