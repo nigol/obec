@@ -28,10 +28,4 @@ public class SettingsServiceImpl implements SettingsService {
     public Settings save(Settings settings) {
         return em.merge(settings);
     }
-
-    @Override
-    public List<String> processGalleryUrls(Settings settings) {
-        String[] urls = settings.getGalleryUrl().split("\\r?\\n");
-        return Arrays.asList(urls);
-    }
 }

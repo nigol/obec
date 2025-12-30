@@ -6,5 +6,4 @@ import java.util.*;
 public interface SettingsService {
     Settings findById(String id);
     Settings save(Settings settings);
-    List<String> processGalleryUrls(Settings settings);
 }
