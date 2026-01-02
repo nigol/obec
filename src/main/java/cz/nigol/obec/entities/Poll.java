@@ -46,7 +46,7 @@ public class Poll implements Serializable {
     @JoinColumn(name="USER_ID")
     private User createdBy;
 
-    @Column(name="LABEL", columnDefinition="VARCHAR(300)")
+    @Column(name="LABEL", columnDefinition="VARCHAR(2000)")
     private String label;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)

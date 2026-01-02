@@ -6,9 +6,10 @@
         xmlns:p="http://primefaces.org/ui">
     <f:event type="preRenderComponent" listener="#{pollResultsBean.loadPoll(pollId)}"/>
 
-    <p style="text-align: center">
-        <h:outputText value="#{pollResultsBean.poll.label}"
-                style="text-decoration: underline; font-size: 200%"/>
+		<center>
+			<h:outputText value="#{pollResultsBean.poll.label}"
+				escape="false"/>
+		</center>
 
             <p:panelGrid layout="grid" columns="3" styleClass="ui-noborder">
                 <p:column/>
@@ -24,5 +25,4 @@
                 </ui:repeat>
                 <p:column/>
             </p:panelGrid>
-        </p>
     </ui:composition>
