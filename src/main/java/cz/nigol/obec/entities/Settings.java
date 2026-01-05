@@ -35,6 +35,17 @@ public class Settings implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
     @OrderBy("id DESC")
     private List<PhotoGalleryItem> galleryItems;
+
+	@Column(name="BANK_ACCOUNT")
+  	private String bankAccount;
+
+	public String getBankAccount() {
+		return bankAccount;
+	}
+
+	public void setBankAccount(String bankAccount) {
+		this.bankAccount = bankAccount;
+	}
     
     public List<PhotoGalleryItem> getGalleryItems() {
         return galleryItems;
