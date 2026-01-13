@@ -3,17 +3,34 @@ package cz.nigol.obec.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+@NamedQueries({
+@NamedQuery(name=PaymentType.GET_ALL, query="SELECT p FROM PaymentType p"),
+})
 @Entity
-@Table(name = "PAYMENT_TYPE")
+@Table(name = "OB_PAYMENT_TYPE")
 public class PaymentType implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
+	public static final String GET_ALL = "PaymentType.GET_ALL";
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
 	private long id;
 
-	@Column(length = 300)
+	@Column(name="SYMBOL")
+	private int symbol;
+
+	@Column(name="LABEL", columnDefinition="VARCHAR(300)")
 	private String label;
+
+	public int getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(int symbol) {
+		this.symbol = symbol;
+	}
 
 	public long getId() {
 		return id;

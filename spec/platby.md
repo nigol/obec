@@ -5,6 +5,7 @@ Specifikace pro systém plateb.
 ## Požadavky
 
 - [DONE] V obecném nastavení číslo účtu, na které budou chodit platby.
+- [DONE] Administrace typů plateb (odpady, psi,...).
 - U každého uživatele nastavení, zda jsou pro něj platby relevantní.
 - Pro každou platbu je třeba mít VS a SS.
 - VS určuje typ platby (odpady, pes,...)?
