@@ -71,6 +71,17 @@ public class User implements Serializable {
     @Column(name="TOKEN")
     private String token;
 
+	@Column(name="PAYMENT_SYMBOL")
+	private String paymentSymbol;
+
+	public String getPaymentSymbol() {
+		return paymentSymbol;
+	}
+
+	public void setPaymentSymbol(String paymentSymbol) {
+		this.paymentSymbol = paymentSymbol;
+	}
+
     public String getToken() {
         return token;
     }
