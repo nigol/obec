@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		template="/WEB-INF/templates/template.xhtml"
+		xmlns:p="http://primefaces.org/ui">
+
+		<ui:param name="title" value="Platby, administrace • Obec Tršice"/>
+
+		<ui:define name="content">
+			<h2>Platby, administrace</h2>
+			
+			<h:form id="paymentForm">				
+				<p:panelGrid layout="grid" columns="5" styleClass="ui-noborder">
+					<p:commandButton value="NOVÁ PLATBA" 
+							action="#{paymentAdminBean.newPayment}"
+							update="@form :growl"
+							resetValues="true"/>
+					<p:commandButton value="OBNOVIT SMAZANOU" 
+							action="#{paymentAdminBean.undeletePayment}"
+							disabled="#{empty paymentAdminBean.deletedPayment}"
+							update="@form :growl"
+							immediate="true"
+							resetValues="true"/>
+				</p:panelGrid>
+				
+				<p:dataTable id="paymentTypes" 
+						value="#{paymentAdminBean.payments}" 
+						emptyMessage="Nenalezen žádný výsledek."
+						rowKey="#{payment.id}"
+						rows="20"
+						paginator="true"
+						paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+						paginatorPosition="bottom"
+						var="payment">
+
+					<p:column headerText="Typ">
+						<p:selectOneMenu id="paymentType"
+							value="#{payment.paymentType}"
+							converter="#{paymentTypeConverter}"
+							style="width:100%">
+							<f:selectItems value="#{paymentAdminBean.paymentTypes}"
+								var="paymentType"
+								itemLabel="#{paymentType.label}"
+								itemValue="#{paymentType}"/>
+						</p:selectOneMenu>
+					</p:column>
+
+					<p:column headerText="Rok">
+						<p:inputText id="year" value="#{payment.year}" style="width:100%"/>
+					</p:column>
+
+					<p:column headerText="Kdo">
+						<p:selectOneMenu id="user"
+							value="#{payment.forUser}"
+							converter="#{userConverter}"
+							style="width:100%">
+							<f:selectItems value="#{paymentAdminBean.users}"
+								var="user"
+								itemLabel="#{user.fullName}"
+								itemValue="#{user}"/>
+						</p:selectOneMenu>
+					</p:column>
+
+					<p:column headerText="Částka">
+						<p:inputText id="amount" value="#{payment.amount}" style="width:40%"/>
+						 ⋮ 
+						<p:commandButton value="💾" 
+							action="#{paymentAdminBean.savePayment(payment)}"
+							update="@form :growl"
+							style="width:25%"
+							resetValues="true"/>
+						<p:commandButton value="🗑️" 
+							action="#{paymentAdminBean.deletePayment(payment)}"
+							update="@form :growl"
+							style="width:25%"
+							resetValues="true"/>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>

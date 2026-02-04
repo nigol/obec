@@ -23,4 +23,26 @@ public class PaymentServiceImpl implements PaymentService {
 	public PaymentType savePaymentType(PaymentType paymentType) {
 		return em.merge(paymentType);
 	}
+
+	@Override
+	public PaymentType getPaymentTypeById(long id) {
+		return em.find(PaymentType.class, id);
+	}
+
+	@Override
+	public List<Payment> getAllPayments() {
+		TypedQuery<Payment> typedQuery = em.createNamedQuery(Payment.GET_ALL, Payment.class);
+		return new ArrayList<>(typedQuery.getResultList());
+	}
+
+	@Override
+	public Payment savePayment(Payment payment) {
+		return em.merge(payment);
+	}
+
+	@Override
+	public void deletePayment(Payment payment) {
+		Payment e = em.merge(payment);
+		em.remove(e);
+	}
 }

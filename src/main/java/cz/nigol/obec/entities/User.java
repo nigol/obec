@@ -7,8 +7,8 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @NamedQueries({
-@NamedQuery(name=User.GET_ALL, query="SELECT u FROM User u ORDER BY u.userId ASC"),
-    @NamedQuery(name=User.GET_ACTIVE, query="SELECT u FROM User u WHERE u.active = true"),
+@NamedQuery(name=User.GET_ALL, query="SELECT u FROM User u ORDER BY u.fullName ASC"),
+    @NamedQuery(name=User.GET_ACTIVE, query="SELECT u FROM User u WHERE u.active = true ORDER BY u.fullName ASC"),
     @NamedQuery(name=User.GET_ACTIVE_BY_USER_ID, query="SELECT u FROM User u WHERE u.userId = :userId AND u.active = true"),
     @NamedQuery(name=User.GET_BY_USER_ID, query="SELECT u FROM User u WHERE u.userId = :userId"),
     @NamedQuery(name=User.FIND_ACTIVE_USER_NAME, query="SELECT u FROM User u WHERE u.fullName LIKE :name AND u.active = true"),
