@@ -45,4 +45,17 @@ public class PaymentServiceImpl implements PaymentService {
 		Payment e = em.merge(payment);
 		em.remove(e);
 	}
+
+	@Override
+	public List<Payment> getPaymentsByYear(int year) {
+		TypedQuery<Payment> typedQuery = em.createNamedQuery(Payment.GET_BY_YEAR, Payment.class);
+		typedQuery.setParameter(Payment.YEAR_PARAM, year);
+		return new ArrayList<>(typedQuery.getResultList());
+	}
+
+	@Override
+	public List<Integer> getYears() {
+		TypedQuery<Integer> typedQuery = em.createNamedQuery(Payment.GET_YEARS, Integer.class);
+		return new ArrayList<>(typedQuery.getResultList());
+	}
 }

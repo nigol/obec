@@ -33,12 +33,31 @@ public class PaymentAdminBean implements Serializable {
 	private List<Payment> payments;
 	private List<User> users;
 	private Payment deletedPayment;
+	private List<Integer> years;
+	private int year;
 
 	@PostConstruct
 	public void init() {
-		paymentTypes = paymentService.getAllPaymentTypes();
-		payments = paymentService.getAllPayments();
+		years = paymentService.getYears();
+		if (!years.isEmpty()) {
+			year = years.get(0);
+		}
+		loadPaymentTypes();
+		loadPayments();
 		users = userService.getAllUsers();
+	}
+
+	private void loadPaymentTypes() {
+		paymentTypes = paymentService.getAllPaymentTypes();
+	}
+
+	private void loadPayments() {
+		years = paymentService.getYears();
+		payments = paymentService.getPaymentsByYear(year);
+	}
+
+	public void onYearSelect() {
+		loadPayments();
 	}
 
 	public void newPayment() {
@@ -58,7 +77,7 @@ public class PaymentAdminBean implements Serializable {
 		paymentService.savePayment(deletedPayment);
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Položka byla obnovena."));
 		deletedPayment = null;
-		init();
+		loadPayments();
 	}
 
 	public void deletePayment(Payment payment) {
@@ -72,19 +91,31 @@ public class PaymentAdminBean implements Serializable {
 		deletedPayment.setAmount(payment.getAmount());
 		deletedPayment.setYear(payment.getYear());
 		deletedPayment.setPaymentType(payment.getPaymentType());
-		init();
+		loadPayments();
 	}
 
 	public void savePayment(Payment payment) {
 		paymentService.savePayment(payment);
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Položka byla uložena."));
-		init();
+		loadPayments();
 	}
 	
 	public void savePaymentType(PaymentType paymentType) {
 		paymentService.savePaymentType(paymentType);
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Položka byla uložena."));
-		init();
+		loadPaymentTypes();
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public List<Integer> getYears() {
+		return years;
 	}
 
 	public Payment getDeletedPayment() {

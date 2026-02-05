@@ -1,13 +1,16 @@
 package cz.nigol.obec.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
 @NamedQueries({
 @NamedQuery(name=Payment.GET_ALL, query="SELECT p FROM Payment p"),
-@NamedQuery(name=Payment.GET_FOR_USER, query="SELECT p FROM Payment p WHERE p.forUser = :user ORDER BY a.changedAt DESC "),
+@NamedQuery(name=Payment.GET_FOR_USER, query="SELECT p FROM Payment p WHERE p.forUser = :user ORDER BY p.changedAt DESC "),
+@NamedQuery(name=Payment.GET_BY_YEAR, query="SELECT p FROM Payment p WHERE p.year = :year ORDER BY p.changedAt DESC "),
+@NamedQuery(name=Payment.GET_YEARS, query="SELECT p.year FROM Payment p GROUP BY p.year ORDER BY p.year DESC"),
 })
 @Entity
 @Table(name = "OB_PAYMENT")
@@ -16,8 +19,11 @@ public class Payment implements Serializable {
 
 	public static final String GET_ALL = "Payment.GET_ALL";
 	public static final String GET_FOR_USER = "Payment.GET_FOR_USER";
+	public static final String GET_BY_YEAR = "Payment.GET_BY_YEAR";
+	public static final String GET_YEARS = "Payment.GET_YEARS";
 
 	public static final String USER_PARAM = "user";
+	public static final String YEAR_PARAM = "year";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -121,13 +127,29 @@ public class Payment implements Serializable {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		Payment that = (Payment) o;
-		return id == that.id;
+		Payment payment = (Payment) o;
+		return id == payment.id
+			&& year == payment.year
+			&& Objects.equals(label, payment.label)
+			&& Objects.equals(changedAt, payment.changedAt)
+			&& Objects.equals(changedBy, payment.changedBy)
+			&& Objects.equals(paymentType, payment.paymentType)
+			&& Objects.equals(forUser, payment.forUser)
+			&& Objects.equals(amount, payment.amount);
 	}
 
 	@Override
 	public int hashCode() {
-		return Long.hashCode(id);
+		return Objects.hash(
+			id,
+			label,
+			changedAt,
+			changedBy,
+			paymentType,
+			forUser,
+			amount,
+			year
+		);
 	}
 
 	@Override

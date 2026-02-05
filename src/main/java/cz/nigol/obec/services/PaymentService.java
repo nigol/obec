@@ -11,4 +11,6 @@ public interface PaymentService {
 	List<Payment> getAllPayments();
 	Payment savePayment(Payment payment);
 	void deletePayment(Payment payment);
+	List<Payment> getPaymentsByYear(int year);
+	List<Integer> getYears();
 }

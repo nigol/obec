@@ -11,7 +11,18 @@
 		<ui:define name="content">
 			<h2>Platby, administrace</h2>
 			
-			<h:form id="paymentForm">				
+			<h:form id="paymentForm">	
+				<center>
+					<p:selectOneMenu id="year"
+						value="#{paymentAdminBean.year}"
+						style="width:30%">
+						<f:selectItems value="#{paymentAdminBean.years}"
+							var="year"
+							itemLabel="🗓️ #{year}"
+							itemValue="#{year}"/>
+						<p:ajax listener="#{paymentAdminBean.onYearSelect}" update="@form"/>
+					</p:selectOneMenu>
+				</center>			
 				<p:panelGrid layout="grid" columns="5" styleClass="ui-noborder">
 					<p:commandButton value="NOVÁ PLATBA" 
 							action="#{paymentAdminBean.newPayment}"
