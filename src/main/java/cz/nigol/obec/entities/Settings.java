@@ -39,6 +39,17 @@ public class Settings implements Serializable {
 	@Column(name="BANK_ACCOUNT")
   	private String bankAccount;
 
+	@Column(name="IBAN")
+  	private String iban;
+
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
 	public String getBankAccount() {
 		return bankAccount;
 	}

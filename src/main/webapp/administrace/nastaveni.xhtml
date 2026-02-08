@@ -50,6 +50,11 @@
 			<p:inputText id="bankAccount" value="#{settingsBean.settings.bankAccount}">
 				<f:validateLength maximum="50"/>
 			</p:inputText>
+
+			<p:outputLabel value="IBAN" for="iban"/>
+			<p:inputText id="iban" value="#{settingsBean.settings.iban}">
+				<f:validateLength maximum="50"/>
+			</p:inputText>
                     
                     <p:panelGrid layout="grid"
                             columns="5"

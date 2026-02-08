@@ -58,4 +58,37 @@ public class PaymentServiceImpl implements PaymentService {
 		TypedQuery<Integer> typedQuery = em.createNamedQuery(Payment.GET_YEARS, Integer.class);
 		return new ArrayList<>(typedQuery.getResultList());
 	}
+
+	@Override
+	public Payment getPaymentById(long id) {
+		return em.find(Payment.class, id);
+	}
+
+	@Override
+	public String getSpecSymbol(Payment payment) {
+		String year = "" + payment.getYear();
+		year = year.substring(2);
+		return year + payment.getForUser().getPaymentSymbol();
+	}
+
+	/*
+	* SPD*1.0*ACC:CZ5608000000000002171532*AM:999*CC:CZK*DT:20150518*MSG:Zpráva*X-KS:1414*X-SS:1313*X-VS:1212
+	* ACC – číslo účtu v IBAN formátu 
+	* AM – částka k platbě
+	* CC – měna
+	* DT – datum splatnosti
+	* MSG – zpráva pro příjemce
+	* X-KS – konstantní, X-SS – specifický a X-VS – variabilní symbol
+	*/
+	@Override
+	public String getQrPayment(Payment payment, Settings settings) {
+		String result = "SPD*1.0*ACC:";
+		result = result + settings.getIban();
+		result = result + "*AM:" + payment.getAmount();
+		result = result + "*CC:CZK";
+		result = result + "*MSG:" + payment.getPaymentType().getLabel();
+		result = result + "*X-SS:" + getSpecSymbol(payment);
+		result = result + "*X-VS:" + payment.getPaymentType().getSymbol();
+		return result;
+	}
 }

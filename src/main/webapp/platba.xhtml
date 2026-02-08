@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/template-transient.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="id" value="#{paymentBean.paymentId}"/>
+			<f:viewParam name="#" value="#{paymentBean.hash}"/>
+			<f:viewAction action="#{paymentBean.onLoad}"/>
+		</f:metadata>
+	</ui:define>
+
+	<ui:param name="title" value="Platba pro #{paymentBean.payment.forUser.fullName} • Obec Tršice"/>
+	<ui:param name="ogDescription" value="Platba pro #{paymentBean.payment.forUser.fullName}"/>
+
+	<ui:define name="content">
+
+		<h:outputScript library="script" name="qrcode.min.js" />
+
+		<h2>Platba pro #{paymentBean.payment.forUser.fullName}</h2>
+
+		<center>
+			<div id="qrcode"></div>
+		</center>
+		<script type="text/javascript">
+			new QRCode(document.getElementById("qrcode"), "#{paymentBean.qr}");
+		</script>
+		
+	</ui:define>
+</ui:composition>

@@ -13,4 +13,7 @@ public interface PaymentService {
 	void deletePayment(Payment payment);
 	List<Payment> getPaymentsByYear(int year);
 	List<Integer> getYears();
+	Payment getPaymentById(long id);
+	String getSpecSymbol(Payment payment);
+	String getQrPayment(Payment payment, Settings settings);
 }
