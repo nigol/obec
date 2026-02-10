@@ -14,21 +14,54 @@
 		</f:metadata>
 	</ui:define>
 
-	<ui:param name="title" value="Platba pro #{paymentBean.payment.forUser.fullName} • Obec Tršice"/>
+	<ui:param name="title" value="Platba, #{paymentBean.payment.forUser.fullName} • Obec Tršice"/>
 	<ui:param name="ogDescription" value="Platba pro #{paymentBean.payment.forUser.fullName}"/>
 
 	<ui:define name="content">
 
 		<h:outputScript library="script" name="qrcode.min.js" />
 
-		<h2>Platba pro #{paymentBean.payment.forUser.fullName}</h2>
+		<h2>Platba, #{paymentBean.payment.forUser.fullName}</h2>
 
-		<center>
-			<div id="qrcode"></div>
-		</center>
-		<script type="text/javascript">
-			new QRCode(document.getElementById("qrcode"), "#{paymentBean.qr}");
-		</script>
+		<h:panelGroup rendered="#{empty paymentBean.payment}">
+			<div style="text-align: center">
+				<p style="font-size: 200%">
+					⛔️
+				</p>
+				<p style="font-size: 200%">
+					Neexistující nebo neplatná platba.
+				</p>
+				<p style="text-align: center">
+					<h:link class="backLink" 
+						outcome="/index.xhtml" value="Zpět na úvod"/>
+				</p>
+			</div>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{!empty paymentBean.payment}">
+			<center>
+				<p:outputLabel value="Plátce" for="forUser"/>
+				<br/>
+				<h:outputText id="forUser" value="#{paymentBean.payment.forUser.fullName}"/>
+				<br/>
+				<p:outputLabel value="Účel platby" for="label"/>
+				<br/>
+				<h:outputText id="label" value="#{paymentBean.payment.paymentType.label}"/>
+				<br/>
+				<p:outputLabel value="Částka v Kč" for="amount"/>
+				<br/>
+				<h:outputText id="amount" value="#{paymentBean.payment.amount}"/>
+				<br/>
+			</center>		
+			
+			<center>
+				<p:outputLabel value="⸻ QR kód ⸻" style="color: rgb(31, 74, 153)"/>
+				<div id="qrcode"></div>
+			</center>
+			<script type="text/javascript">
+				new QRCode(document.getElementById("qrcode"), "#{paymentBean.qr}");
+			</script>
+		</h:panelGroup>
 		
 	</ui:define>
 </ui:composition>

@@ -75,7 +75,11 @@
 					</p:column>
 
 					<p:column headerText="Částka">
-						<p:inputText id="amount" value="#{payment.amount}" style="width:40%"/>
+						<p:inputText id="amount" value="#{payment.amount}" style="width:30%"/>
+						<h:link outcome="/platba.xhtml" style="text-decoration: none">
+							<f:param name="id" value="#{payment.id}"/>
+							<span style="font-size: 80%">🔗</span>
+						</h:link>
 						 ⋮ 
 						<p:commandButton value="💾" 
 							action="#{paymentAdminBean.savePayment(payment)}"

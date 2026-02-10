@@ -8,6 +8,7 @@ Specifikace pro systém plateb.
 - [DONE] Administrace typů plateb (odpady, psi,...).
 - [DONE] U každého uživatele nastavení, zda jsou pro něj platby relevantní.
 - [DONE] Administrace - generování plateb. Vybrat typ platby, uživatel, rok, částka.
+- Administrace plateb, tabulka - odkaz na platbu.
 - Pro každou platbu je třeba mít VS a SS.
 - VS určuje typ platby (odpady, pes,...)?
 - SS je identifikace roku (první 2 čísla) a plátce?
