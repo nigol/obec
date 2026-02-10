@@ -22,14 +22,9 @@
 				<p:dataTable id="paymentTypes" 
 						value="#{paymentAdminBean.paymentTypes}" 
 						emptyMessage="Nenalezen žádný výsledek."
-						rowKey="#{paymentType.id}"
-						rows="20"
-						paginator="true"
-						paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-						paginatorPosition="bottom"
 						var="paymentType">
 					
-					<p:column headerText="ID typu">
+					<p:column headerText="V. symbol">
 						<p:inputText id="id" value="#{paymentType.symbol}" style="width:100%"/>
 					</p:column>
 

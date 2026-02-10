@@ -39,11 +39,6 @@
 				<p:dataTable id="paymentTypes" 
 						value="#{paymentAdminBean.payments}" 
 						emptyMessage="Nenalezen žádný výsledek."
-						rowKey="#{payment.id}"
-						rows="20"
-						paginator="true"
-						paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-						paginatorPosition="bottom"
 						var="payment">
 
 					<p:column headerText="Typ">

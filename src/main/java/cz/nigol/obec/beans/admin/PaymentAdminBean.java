@@ -97,6 +97,7 @@ public class PaymentAdminBean implements Serializable {
 	public void savePayment(Payment payment) {
 		paymentService.savePayment(payment);
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Položka byla uložena."));
+		year = payment.getYear();
 		loadPayments();
 	}
 	
