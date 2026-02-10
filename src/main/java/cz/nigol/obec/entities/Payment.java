@@ -55,6 +55,10 @@ public class Payment implements Serializable {
 	@Column(name="YEAR")
 	private int year;
 
+	public int getHash() {
+		return hashCode();
+	}
+
 	public int getYear() {
 		return year;
 	}

@@ -78,6 +78,7 @@
 						<p:inputText id="amount" value="#{payment.amount}" style="width:30%"/>
 						<h:link outcome="/platba.xhtml" style="text-decoration: none">
 							<f:param name="id" value="#{payment.id}"/>
+							<f:param name="h" value="#{payment.hash}"/>
 							<span style="font-size: 80%">🔗</span>
 						</h:link>
 						 ⋮ 

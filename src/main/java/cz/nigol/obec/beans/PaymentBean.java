@@ -23,6 +23,11 @@ public class PaymentBean {
 
 	public void onLoad() {
 		payment = paymentService.getPaymentById(paymentId);
+		if (payment == null || payment.hashCode() != hash ) {
+			payment = null;
+			return;
+		}
+		
 		if (payment != null) {
 			qr = paymentService.getQrPayment(payment, settings);
 		}
