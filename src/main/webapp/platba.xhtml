@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/template-transient.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="id" value="#{paymentBean.paymentId}"/>
+			<f:viewParam name="h" value="#{paymentBean.hash}"/>
+			<f:viewAction action="#{paymentBean.onLoad}"/>
+		</f:metadata>
+	</ui:define>
+
+	<ui:param name="title" value="Platba, #{paymentBean.payment.forUser.fullName} • Obec Tršice"/>
+	<ui:param name="ogDescription" value="Platba pro #{paymentBean.payment.forUser.fullName}"/>
+
+	<ui:define name="content">
+
+		<h:outputScript library="script" name="qrcode.min.js" />
+
+		<h2>Platba, #{paymentBean.payment.forUser.fullName}</h2>
+
+		<h:panelGroup rendered="#{empty paymentBean.payment}">
+			<div style="text-align: center">
+				<p style="font-size: 200%">
+					⛔️
+				</p>
+				<p style="font-size: 200%">
+					Neexistující nebo neplatná platba.
+				</p>
+				<p style="text-align: center">
+					<h:link class="backLink" 
+						outcome="/index.xhtml" value="Zpět na úvod"/>
+				</p>
+			</div>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{!empty paymentBean.payment}">
+			<center>
+				<p:outputLabel value="Plátce" for="forUser"/>
+				<br/>
+				<h:outputText id="forUser" value="#{paymentBean.payment.forUser.fullName}"/>
+				<br/>
+				<p:outputLabel value="Účel platby" for="label"/>
+				<br/>
+				<h:outputText id="label" value="#{paymentBean.payment.paymentType.label}"/>
+				<br/>
+				<p:outputLabel value="Částka v Kč" for="amount"/>
+				<br/>
+				<h:outputText id="amount" value="#{paymentBean.payment.amount}"/>
+				<br/>
+			</center>		
+			
+			<center>
+				<p:outputLabel value="⸻ QR kód ⸻" style="color: rgb(31, 74, 153)"/>
+				<div id="qrcode"></div>
+			</center>
+			<script type="text/javascript">
+				new QRCode(document.getElementById("qrcode"), "#{paymentBean.qr}");
+			</script>
+		</h:panelGroup>
+		
+	</ui:define>
+</ui:composition>

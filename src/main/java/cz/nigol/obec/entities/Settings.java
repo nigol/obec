@@ -28,9 +28,6 @@ public class Settings implements Serializable {
 
     @Column(name="HEADER_IMAGE_URL")
     private String headerImageUrl;
-
-    @Column(name="GALLERY_URL", columnDefinition="VARCHAR(4000)")
-    private String galleryUrl;
     
     @Column(name="WATER_SPEND_PERIOD")
     private String waterSpendPeriod;
@@ -38,6 +35,28 @@ public class Settings implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
     @OrderBy("id DESC")
     private List<PhotoGalleryItem> galleryItems;
+
+	@Column(name="BANK_ACCOUNT")
+  	private String bankAccount;
+
+	@Column(name="IBAN")
+  	private String iban;
+
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
+	public String getBankAccount() {
+		return bankAccount;
+	}
+
+	public void setBankAccount(String bankAccount) {
+		this.bankAccount = bankAccount;
+	}
     
     public List<PhotoGalleryItem> getGalleryItems() {
         return galleryItems;
@@ -53,14 +72,6 @@ public class Settings implements Serializable {
     
     public void setWaterSpendPeriod(String waterSpendPeriod) {
         this.waterSpendPeriod = waterSpendPeriod;
-    }
-
-    public String getGalleryUrl() {
-        return galleryUrl;
-    }
-
-    public void setGalleryUrl(String galleryUrl) {
-        this.galleryUrl = galleryUrl;
     }
 
     public String getHeaderImageUrl() {

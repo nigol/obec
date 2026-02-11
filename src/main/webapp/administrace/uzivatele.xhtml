@@ -101,6 +101,12 @@
                                 <f:validateLength maximum="100"/>
                             </p:password>
 
+				<p:outputLabel value="Specifický symbol" for="paymentSymbol"/>
+                        		<p:inputText id="paymentSymbol"
+                                		value="#{usersBean.user.paymentSymbol}">
+                            	<f:validateLength maximum="30"/>
+                        		</p:inputText>
+
                             <p:selectBooleanCheckbox value="#{usersBean.user.sendAnnouncements}" 
                                 itemLabel="Posílat hlášení rozhlasu"/>
 

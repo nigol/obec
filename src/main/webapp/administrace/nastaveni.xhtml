@@ -40,20 +40,21 @@
                     <p:inputText id="importantMsgUrl" value="#{settingsBean.settings.importantMsgUrl}">
                         <f:validateLength maximum="200"/>
                     </p:inputText>
-
-                    <p:outputLabel value="Obrázky galerie (URL)" for="gallery"/>
-                    <p:inputTextarea id="gallery"
-                            rows="20"
-                            cols="30"
-                            value="#{settingsBean.settings.galleryUrl}"
-                            style="max-height: 350px">
-                        <f:validateLength maximum="4000"/>
-                    </p:inputTextarea>
                     
                     <p:outputLabel value="Období pro odečet vodoměrů" for="waterSpendPeriod"/>
                     <p:inputText id="waterSpendPeriod" value="#{settingsBean.settings.waterSpendPeriod}">
                         <f:validateLength maximum="200"/>
                     </p:inputText>
+
+			<p:outputLabel value="Bankovní účet" for="bankAccount"/>
+			<p:inputText id="bankAccount" value="#{settingsBean.settings.bankAccount}">
+				<f:validateLength maximum="50"/>
+			</p:inputText>
+
+			<p:outputLabel value="IBAN" for="iban"/>
+			<p:inputText id="iban" value="#{settingsBean.settings.iban}">
+				<f:validateLength maximum="50"/>
+			</p:inputText>
                     
                     <p:panelGrid layout="grid"
                             columns="5"

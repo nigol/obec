@@ -1,0 +1,166 @@
+package cz.nigol.obec.entities;
+
+import java.io.Serializable;
+import java.util.Objects;
+import java.math.BigDecimal;
+import java.util.Date;
+import javax.persistence.*;
+
+@NamedQueries({
+@NamedQuery(name=Payment.GET_ALL, query="SELECT p FROM Payment p"),
+@NamedQuery(name=Payment.GET_FOR_USER, query="SELECT p FROM Payment p WHERE p.forUser = :user ORDER BY p.changedAt DESC "),
+@NamedQuery(name=Payment.GET_BY_YEAR, query="SELECT p FROM Payment p WHERE p.year = :year ORDER BY p.changedAt DESC "),
+@NamedQuery(name=Payment.GET_YEARS, query="SELECT p.year FROM Payment p GROUP BY p.year ORDER BY p.year DESC"),
+})
+@Entity
+@Table(name = "OB_PAYMENT")
+public class Payment implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	public static final String GET_ALL = "Payment.GET_ALL";
+	public static final String GET_FOR_USER = "Payment.GET_FOR_USER";
+	public static final String GET_BY_YEAR = "Payment.GET_BY_YEAR";
+	public static final String GET_YEARS = "Payment.GET_YEARS";
+
+	public static final String USER_PARAM = "user";
+	public static final String YEAR_PARAM = "year";
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
+	private long id;
+
+	@Column(name="LABEL", columnDefinition="VARCHAR(100)")
+	private String label;
+
+	@Column(name="CHANGED_AT")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date changedAt;
+
+	@ManyToOne
+	@JoinColumn(name="USER_ID")
+	private User changedBy;
+
+	@ManyToOne
+	@JoinColumn(name="PAYMENT_TYPE_ID")
+	private PaymentType paymentType;
+
+	@ManyToOne
+	@JoinColumn(name="FOR_USER_ID")
+	private User forUser;
+
+	@Column(name="AMOUNT")
+	private BigDecimal amount;
+
+	@Column(name="YEAR")
+	private int year;
+
+	public int getHash() {
+		return hashCode();
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+	
+	public User getForUser() {
+		return forUser;
+	}
+ 
+	public void setForUser(User forUser) {
+		this.forUser = forUser;
+	 }
+
+	public PaymentType getPaymentType() {
+		return paymentType;
+	}
+
+	public void setPaymentType(PaymentType paymentType) {
+		this.paymentType = paymentType;
+	}
+
+	public Date getChangedAt() {
+		return changedAt;
+	}
+
+	public void setChangedAt(Date changedAt) {
+		this.changedAt = changedAt;
+	}
+
+	public User getChangedBy() {
+		return changedBy;
+	}
+ 
+	public void setChangedBy(User changedBy) {
+		this.changedBy = changedBy;
+	 }
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Payment payment = (Payment) o;
+		return id == payment.id
+			&& year == payment.year
+			&& Objects.equals(label, payment.label)
+			&& Objects.equals(changedAt, payment.changedAt)
+			&& Objects.equals(changedBy, payment.changedBy)
+			&& Objects.equals(paymentType, payment.paymentType)
+			&& Objects.equals(forUser, payment.forUser)
+			&& Objects.equals(amount, payment.amount);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(
+			id,
+			label,
+			changedAt,
+			changedBy,
+			paymentType,
+			forUser,
+			amount,
+			year
+		);
+	}
+
+	@Override
+	public String toString() {
+		return "PaymentType{" +
+			"id=" + id +
+			", label='" + label + '\'' +
+			'}';
+	}
+}

@@ -9,6 +9,12 @@
         <ui:param name="title" value="Ankety, administrace • Obec Tršice"/>
 
         <ui:define name="content">
+
+		<h:outputScript library="script" name="trix.js" />
+		<h:outputStylesheet library="css" name="trix.css" />
+
+		<ui:include src="/WEB-INF/includes/filesButton.xhtml"/>
+
             <h2>Ankety, administrace</h2>
 
             <h:form id="pollsForm">
@@ -36,10 +42,12 @@
                             listener="#{pollAdminBean.onPollSelect}"
                             update="@form"
                             resetValues="true"/>
+			<p:column selectionMode="single"
+                            	style="width:16px;text-align:center"/>
                     <p:column headerText="Anketa"
                             filterBy="#{poll.label}"
                             filterMatchMode="contains">
-                        <h:outputText value="#{poll.label}"/>
+                        <h:outputText value="#{poll.label}" escape="false"/>
                     </p:column>
                 </p:dataTable>
 
@@ -52,12 +60,15 @@
                         &#160;&#160;
                         <p:outputLabel value="Aktivní" for="active"/>
                     </h:panelGroup>
-                    <p:outputLabel value="Název ankety" for="label"/>
-                    <p:inputText id="label" 
+			
+			<p:outputLabel value="Popis ankety" for="label"/>
+			<trix-editor input="pollsForm:label"></trix-editor>
+
+                    <h:inputHidden id="label" 
                             required="true"
                             value="#{pollAdminBean.poll.label}">
-                        <f:validateLength maximum="300"/>
-                    </p:inputText>
+                        <f:validateLength maximum="2000"/>
+                    </h:inputHidden>
 
                     <p:panelGrid layout="grid"
                             columns="2"
