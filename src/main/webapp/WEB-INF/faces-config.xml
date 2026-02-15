@@ -17,4 +17,9 @@
     <lifecycle>
         <phase-listener>cz.nigol.obec.listeners.HttpHeaderPhaseListener</phase-listener>
     </lifecycle>
+	<lifecycle>
+		<phase-listener>
+			cz.nigol.obec.listeners.CsrfProtectionPhaseListener
+		</phase-listener>
+	</lifecycle>
 </faces-config>
