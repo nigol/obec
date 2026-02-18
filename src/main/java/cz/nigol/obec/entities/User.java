@@ -74,6 +74,17 @@ public class User implements Serializable {
 	@Column(name="PAYMENT_SYMBOL")
 	private String paymentSymbol;
 
+	@Column(name="ADDRESS")
+	private String address;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public String getPaymentSymbol() {
 		return paymentSymbol;
 	}

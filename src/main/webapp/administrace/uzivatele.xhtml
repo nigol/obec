@@ -70,6 +70,12 @@
                             <f:validateLength maximum="200"/>
                         </p:inputText>
 
+				<p:outputLabel value="Adresa" for="address"/>
+                        		<p:inputText id="address"
+                                		value="#{usersBean.user.address}">
+                            	<f:validateLength maximum="300"/>
+                        		</p:inputText>
+
                         <p:outputLabel value="Oslovení" for="salutation"/>
                         <p:inputText id="salutation"
                                 value="#{usersBean.user.salutation}">
