@@ -41,6 +41,7 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 * JSESSION pouze v cookie.
 * CSFR protection.
+* Úprava editace uživatele.
 
 ### Verze 1.9.0
 
