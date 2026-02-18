@@ -95,12 +95,6 @@
                                         itemValue="#{role}"/>
                             </p:selectOneMenu>
 
-                            <p:outputLabel value="Heslo" for="password"/>
-                            <p:password id="password"
-                                    value="#{usersBean.password}">
-                                <f:validateLength maximum="100"/>
-                            </p:password>
-
 				<p:outputLabel value="Specifický symbol" for="paymentSymbol"/>
                         		<p:inputText id="paymentSymbol"
                                 		value="#{usersBean.user.paymentSymbol}">
