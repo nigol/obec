@@ -16,4 +16,5 @@ public interface PaymentService {
 	Payment getPaymentById(long id);
 	String getSpecSymbol(Payment payment);
 	String getQrPayment(Payment payment, Settings settings);
+	void sendQrMail(Payment payment);
 }

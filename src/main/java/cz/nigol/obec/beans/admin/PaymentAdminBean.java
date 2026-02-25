@@ -73,6 +73,11 @@ public class PaymentAdminBean implements Serializable {
 		paymentTypes.add(paymentType);
 	}
 
+	public void sendQrMail(Payment payment) {
+		paymentService.sendQrMail(payment);
+		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Email byl odeslán."));
+	}
+
 	public void undeletePayment() {
 		paymentService.savePayment(deletedPayment);
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Položka byla obnovena."));

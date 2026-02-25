@@ -37,6 +37,11 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.9.2
+
+* Registrace pro platby.
+* Odesílání emailu o platbě.
+
 ### Verze 1.9.1
 
 * JSESSION pouze v cookie.

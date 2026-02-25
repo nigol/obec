@@ -42,6 +42,17 @@ public class Settings implements Serializable {
 	@Column(name="IBAN")
   	private String iban;
 
+	@Column(name="NOTIFICATION_EMAIL")
+  	private String notificationEmail;
+
+	public String getNotificationEmail() {
+		return notificationEmail;
+	}
+
+	public void setNotificationEmail(String notificationEmail) {
+		this.notificationEmail = notificationEmail;
+	}
+
 	public String getIban() {
 		return iban;
 	}

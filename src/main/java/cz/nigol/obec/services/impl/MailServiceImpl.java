@@ -53,7 +53,7 @@ public class MailServiceImpl implements MailService {
         }
     }
 
-    private void saveMailLog(MailLog mailLog) {
-        em.merge(mailLog);
+    private MailLog saveMailLog(MailLog mailLog) {
+        return em.merge(mailLog);
     }
 }

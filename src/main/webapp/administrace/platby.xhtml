@@ -41,7 +41,8 @@
 						emptyMessage="Nenalezen žádný výsledek."
 						var="payment">
 
-					<p:column headerText="Typ">
+					<p:column headerText="Typ"
+						style="width: 30%">
 						<p:selectOneMenu id="paymentType"
 							value="#{payment.paymentType}"
 							converter="#{paymentTypeConverter}"
@@ -53,11 +54,13 @@
 						</p:selectOneMenu>
 					</p:column>
 
-					<p:column headerText="Rok">
+					<p:column headerText="Rok"
+						style="width: 10%">
 						<p:inputText id="year" value="#{payment.year}" style="width:100%"/>
 					</p:column>
 
-					<p:column headerText="Kdo">
+					<p:column headerText="Kdo"
+						style="width: 30%">
 						<p:selectOneMenu id="user"
 							value="#{payment.forUser}"
 							converter="#{userConverter}"
@@ -69,7 +72,8 @@
 						</p:selectOneMenu>
 					</p:column>
 
-					<p:column headerText="Částka">
+					<p:column headerText="Částka"
+						style="width: 30%">
 						<p:inputText id="amount" value="#{payment.amount}" style="width:30%"/>
 						<h:link outcome="/platba.xhtml" style="text-decoration: none">
 							<f:param name="id" value="#{payment.id}"/>
@@ -80,12 +84,17 @@
 						<p:commandButton value="💾" 
 							action="#{paymentAdminBean.savePayment(payment)}"
 							update="@form :growl"
-							style="width:25%"
+							style="width:18%"
+							resetValues="true"/>
+						<p:commandButton value="📬" 
+							action="#{paymentAdminBean.sendQrMail(payment)}"
+							update="@form :growl"
+							style="width:18%"
 							resetValues="true"/>
 						<p:commandButton value="🗑️" 
 							action="#{paymentAdminBean.deletePayment(payment)}"
 							update="@form :growl"
-							style="width:25%"
+							style="width:18%"
 							resetValues="true"/>
 					</p:column>
 				</p:dataTable>

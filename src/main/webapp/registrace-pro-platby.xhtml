@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/template-transient.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:param name="title" value="Registrace pro QR platby • Obec Tršice"/>
+
+	<ui:define name="content">
+		<h2>Registrace pro QR platby</h2>	
+
+		<p:panelGrid layout="grid" columns="1" styleClass="ui-noborder">
+			<h:form>
+				<h:panelGroup rendered="#{!paymentRegistrationBean.sent}">
+					<p:outputLabel value="Chci dostávat na email oznámení o platbách poplatků." 
+						 for="email"/>
+					<p:inputText id="email" 
+						value="#{paymentRegistrationBean.email}" 
+						required="true"
+						validatorMessage="Vyplňte platnou emailovou adresu, prosím.">
+						<f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+					</p:inputText>
+
+					<p:panelGrid layout="grid"
+						columns="5"
+						styleClass="ui-noborder">
+						<p:commandButton value="PŘIHLÁSIT" 
+							action="#{paymentRegistrationBean.register}"
+							styleClass="default"
+							update=":growl @form"/>
+					</p:panelGrid>	
+				</h:panelGroup>
+
+				<h:panelGroup rendered="#{paymentRegistrationBean.sent}">
+					<div style="text-align: center">
+						<i class="fa fa-check-circle-o" 
+							style="font-size: 600%; color: green">
+						</i>
+						<p style="font-size: 200%">
+							Přihlášení ke QR platbám proběhlo v pořádku.
+						</p>
+					</div>
+				</h:panelGroup>
+			</h:form>
+
+			<br/><br/>
+
+		</p:panelGrid>
+
+		<ui:include src="/WEB-INF/includes/article.xhtml">
+			<ui:param name="articleId" value="/registrace-pro-platby.jsf"/>
+		</ui:include>
+	</ui:define>
+
+</ui:composition>
