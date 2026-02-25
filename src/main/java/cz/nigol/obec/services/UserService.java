@@ -25,4 +25,5 @@ public interface UserService {
     User getUserByEmail(String email);
     void sendPasswordLinkByEmail(String email);
     User getUserByToken(String token);
+	void sendNewUserInfoByEmail(String email, User user);
 }

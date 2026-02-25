@@ -26,4 +26,26 @@ public class Templates {
         "vyžádal/a změnu hesla na www.trsice.cz. " + 
         "Pokud jste o změnu nežádal/a, můžete tento email smazat.</p>" +
         "</body></html>";
+
+	public static final String NEW_USER_SUBJ =
+		"Registrován nový uživatel - platby";
+	public static final String NEW_USER =
+		"<html><body><h1>Registrován nový uživatel - platby</h1>" + 
+		"<center><img style='width: 100px' src='https://www.trsice.cz/erb.png'></img></center>" +
+		"<p><b>VARIABLE1</b></p><br>" +
+		"<p><i>Uživatele můžete spravovat ve <a href='https://www.trsice.cz/administrace/uzivatele.jsf'>SPRÁVĚ UŽIVATELŮ</a>.</i></p><br><br>" +	
+		"</body></html>";
+
+	public static final String NEW_PAYMENT_SUBJ =
+		"Vytvořena nová platba, Obec Tršice";
+	public static final String NEW_PAYMENT =
+		"<html><body><h1>Vytvořena nová platba, Obec Tršice</h1>" + 
+		"<center><img style='width: 100px' src='https://www.trsice.cz/erb.png'></img></center>" +
+		"<p>Na základě Vaší registrace na webových stránkách <a href='https://www.trsice.cz'>Obce Tršice</a> " + 
+		"Vám byla vytvořena platba pro <b>VARIABLE1</b>.</p>" +
+		"<p>Platbu můžete zaplatit pomocí QR kódu. Pro jeho zobrazení klikněte  </p>" +
+		"<p><center><a href='https://www.trsice.cz/platba.jsf?h=VARIABLE2&id=VARIABLE3'>ZDE</a>.</center></p>" +
+		"<p>Pokud Vám nefunguje odkaz, zkopírujte a vložte do prohlížeče adresu " +
+		"https://www.trsice.cz/platba.jsf?h=VARIABLE2&id=VARIABLE3" + 
+		"</body></html>";
 }

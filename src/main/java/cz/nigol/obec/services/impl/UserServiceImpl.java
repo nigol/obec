@@ -172,4 +172,14 @@ public class UserServiceImpl implements UserService {
         List<User> users = typedQuery.getResultList();
         return users.isEmpty() ? null : users.get(0);
     }
+
+	@Override
+	@Asynchronous
+	public void sendNewUserInfoByEmail(String email, User user) {
+		if (user != null) {
+			String body = Templates.NEW_USER
+			.replaceAll("VARIABLE1", user.getEmail());
+			mailService.sendEmail(email, Templates.NEW_USER_SUBJ, body);
+		}
+	}
 }

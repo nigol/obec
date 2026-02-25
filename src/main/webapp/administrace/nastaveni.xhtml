@@ -31,6 +31,12 @@
                         <f:validateLength maximum="200"/>
                     </p:inputText>
 
+			<p:outputLabel value="Email pro notifikace" for="email"/>
+			<p:inputText id="email"
+				value="#{settingsBean.settings.notificationEmail}">
+				<f:validateLength maximum="300"/>
+			</p:inputText>
+
                     <p:outputLabel value="Důležitá zpráva" for="importantMsg"/>
                     <p:inputText id="importantMsg" value="#{settingsBean.settings.importantMsg}">
                         <f:validateLength maximum="200"/>

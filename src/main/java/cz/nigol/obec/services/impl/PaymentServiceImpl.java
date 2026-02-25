@@ -4,14 +4,18 @@ import java.util.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import javax.inject.Inject;
 
 import cz.nigol.obec.entities.*;
-import cz.nigol.obec.services.PaymentService;
+import cz.nigol.obec.services.*;
+import cz.nigol.obec.config.*;
 
 @Stateless
 public class PaymentServiceImpl implements PaymentService {
 	@PersistenceContext(unitName="obecPU")
 	private EntityManager em;
+	@Inject
+	private MailService mailService;
 
 	@Override
 	public List<PaymentType> getAllPaymentTypes() {
@@ -90,5 +94,15 @@ public class PaymentServiceImpl implements PaymentService {
 		result = result + "*X-SS:" + getSpecSymbol(payment);
 		result = result + "*X-VS:" + payment.getPaymentType().getSymbol();
 		return result;
+	}
+
+	@Override
+	public void sendQrMail(Payment payment) {
+		String body = Templates.NEW_PAYMENT
+			.replaceAll("VARIABLE1", payment.getPaymentType().getLabel())
+			.replaceAll("VARIABLE2", "" + payment.getHash())
+			.replaceAll("VARIABLE3", "" + payment.getId());
+		mailService.sendEmail(payment.getForUser().getEmail(), 
+			Templates.NEW_PAYMENT_SUBJ, body);
 	}
 }
