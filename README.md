@@ -37,6 +37,10 @@ Také je třeba nastavit _mailServer_ resource pro konfiguraci odesílání emai
 
 ## Changelog
 
+### Verze 1.9.3
+
+* Oprava posílání emailu pro platby.
+
 ### Verze 1.9.2
 
 * Registrace pro platby.
