@@ -22,7 +22,7 @@ public class PaymentRegistrationBean {
 	public void register() {
 		userService.subscribeAnnouncements(email);
 		User user = userService.getUserByEmail(email);
-		userService.sendNewUserInfoByEmail(email, user);
+		userService.sendNewUserInfoByEmail(settings.getNotificationEmail(), user);
 		sent = true;
 	}
 
